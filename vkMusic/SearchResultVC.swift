@@ -10,45 +10,115 @@ import UIKit
 import MediaPlayer
 import AVFoundation
 
-class SearchResultVC: UIViewController, UITableViewDelegate, APIControllerProtocol{
+class SearchResultVC: UIViewController {
 
     let kCellIdentifier: String = "SearchResultCell"
-    var mediaPlayer: MPMoviePlayerController = MPMoviePlayerController()
-    private var player: AVQueuePlayer = AVQueuePlayer()
     
-    @IBOutlet var tableView : UITableView?
-    var tableData = []
-    //var api = APIController(delegate: self)
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var tableView: UITableView!
+   
+    var timer: NSTimer? = nil
     var api : APIController?
     var imageCache = [String : UIImage]()
     var trackList = [TrackList]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-        api = APIController(delegate: self)
-        api!.searchVKFor("Jah Khalib", sort: "1", count: "300")
+        tableView.estimatedRowHeight = 100
+        tableView.rowHeight = UITableViewAutomaticDimension
+        self.searchBar.delegate = self
+        self.searchBar.searchBarStyle = UISearchBarStyle.Minimal
+        GetTrackList("Fink")
     }
     
-    /// MARK: UITableViewDataSource, UITableViewDelegate methods
+    func GetTrackList(searchText: String){
+        api = APIController(delegate: self)
+        api!.searchVKFor(searchText, sort: "2", count: "300")
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return trackList.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifier) as! SearchResultCell
+        let cell = self.tableView.dequeueReusableCellWithIdentifier(kCellIdentifier) as! SearchResultCell
         
         let track = self.trackList[indexPath.row]
-        cell.title.text = track.title
-        cell.duration.text = "\(track.duration)"
+        cell.title.text = "\(track.artist) - \(track.title)"
+        cell.duration.text = stringFromTimeInterval(track.duration)
         
         return cell
     }
     
-    // The APIControllerProtocol method
-    func didReceiveAPIResults(results: NSDictionary) {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "ShowPlayer" {
+            if let blogActions = segue.destinationViewController as? PlayMusic {
+                if let ppc = blogActions.popoverPresentationController {
+                    ppc.delegate = self
+                }
+            }
+        }
+    }
+    
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        cell.layer.transform = CATransform3DMakeScale(0.1,0.1,1)
+        UIView.animateWithDuration(0.25, animations: {
+            cell.layer.transform = CATransform3DMakeScale(1,1,1)
+        })
+    }
+
+    @IBAction func playBtnTapped(sender: UIButton) {
         
+        let button = sender as UIButton
+        let viewB = button.superview!
+        let viewBack = viewB.superview
+        let cell = viewBack?.superview as! SearchResultCell
+        
+        let indexPath = self.tableView.indexPathForCell(cell)
+        
+        if let popoverVC = self.storyboard?.instantiateViewControllerWithIdentifier("PlayMusic") as? PlayMusic
+        {
+            popoverVC.modalPresentationStyle = .Popover
+            popoverVC.trackList = self.trackList
+            popoverVC.index = indexPath!.row
+            
+            AudioPlayer.sharedInstance.currentAudio = trackList[indexPath!.row]
+            AudioPlayer.sharedInstance.play()
+            
+            let popover = popoverVC.popoverPresentationController!
+            popover.delegate = self
+            var frame = UIScreen.mainScreen().applicationFrame
+            popover.sourceView = view
+            var rect = CGRectMake(0 , frame.origin.y / 2, frame.width, frame.height)
+            popover.sourceRect = rect
+            popover.permittedArrowDirections = UIPopoverArrowDirection.allZeros
+            presentViewController(popoverVC, animated: true, completion: nil)
+        }
+    }
+    
+    func showPopover(base: UIView, text: String)
+    {
+        if let popoverVC = self.storyboard?.instantiateViewControllerWithIdentifier("PlayMusic") as? PlayMusic
+        {
+            popoverVC.modalPresentationStyle = .Popover
+            popoverVC.trackList = self.trackList
+            let popover = popoverVC.popoverPresentationController!
+            popover.delegate = self
+            var frame = UIScreen.mainScreen().applicationFrame
+            popover.sourceView = view
+            var rect = CGRectMake(0 , frame.origin.y / 2, frame.width, frame.height)
+            popover.sourceRect = rect
+            popover.permittedArrowDirections = UIPopoverArrowDirection.allZeros
+            presentViewController(popoverVC, animated: true, completion: nil)
+        }
+    }
+    
+}
+
+extension SearchResultVC: APIControllerProtocol {
+    
+    func didReceiveAPIResults(results: NSDictionary) {
         var resultsArr = results["response"] as! NSArray
         //println(resultsArr)
         dispatch_async(dispatch_get_main_queue(), {
@@ -58,29 +128,65 @@ class SearchResultVC: UIViewController, UITableViewDelegate, APIControllerProtoc
         })
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-       
+    func result(status: String, error_msg: String, error_code: Int, captcha_sid: String, captcha_img: String)
+    {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+
+        if(error_code == 14){
+            var captchaNeededVC = self.storyboard?.instantiateViewControllerWithIdentifier("CaptchaNeededVC") as! CaptchaNeededVC
+            captchaNeededVC.captchaImgUrl = captcha_img
+            captchaNeededVC.captcha_sid = captcha_sid
+            self.navigationController?.presentViewController(captchaNeededVC, animated: true, completion: nil)
+        }
+        
+        if(error_code == 6){
+            self.GetTrackList("Fink")
+        }
+        
+    }
+}
+
+extension SearchResultVC: UISearchBarDelegate {
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        /*timer?.invalidate()
+        timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("getHints:"), userInfo: searchText, repeats: false)*/
+        
     }
     
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        self.GetTrackList(searchBar.text)
+        self.searchBar.resignFirstResponder()
+    }
     
-    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        cell.layer.transform = CATransform3DMakeScale(0.1,0.1,1)
-        UIView.animateWithDuration(0.25, animations: {
-            cell.layer.transform = CATransform3DMakeScale(1,1,1)
-        })
+    func getHints(timer: NSTimer) {
+        if (timer.userInfo?.length >= 3){
+            self.GetTrackList(timer.userInfo! as! String)
+            self.searchBar.resignFirstResponder()
+        }
     }
 
-    
 }
 
 extension SearchResultVC: UITableViewDataSource {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var track = trackList[indexPath.row]
-        println(track.url)
-        self.player.pause()
-        let nURL = NSURL(string: track.url)
-        self.player.replaceCurrentItemWithPlayerItem(AVPlayerItem(URL: nURL))
-        self.player.play()
+        let currentAudio = trackList[indexPath.row]
+       
+        var selectedCell = self.tableView.cellForRowAtIndexPath(indexPath)
     }
 }
 
+extension SearchResultVC: UIScrollViewDelegate {
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        self.searchBar.resignFirstResponder()
+    }
+}
+
+extension SearchResultVC: UIPopoverPresentationControllerDelegate {
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.None
+    }
+    
+    func popoverPresentationControllerDidDismissPopover(popoverPresentationController: UIPopoverPresentationController) {
+        AudioPlayer.sharedInstance.stop()
+    }
+}

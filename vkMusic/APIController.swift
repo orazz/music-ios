@@ -6,17 +6,30 @@
 //  Copyright (c) 2015 veriloft. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct Config {
     
     static let VK_SERVER = "https://api.vk.com/"
     static let VK_AUDIO_SEARCH = VK_SERVER + "method/audio.search"
-    static let ACCESS_TOKEN = "4d45c6ebef3b05a910071c948bb1374015c9e47ad953fba2f631d8bc1fca425a0a0bffcb4955d3af90c07"
+    static let ACCESS_TOKEN =  "3e2f0b5c127bc8bccc5e4b20eeb55117c0c09079c9e6a4788735f9c9615ccf628cc7f1919bf0acb329c2b"
 }
 
+func stringFromTimeInterval(interval: Int) -> String{
+    var ti = NSInteger(interval)
+    var seconds: NSInteger = ti % 60
+    var minutes: NSInteger = (ti / 60) % 60
+    var hours: NSInteger = (ti/3600)
+    if hours > 0 {
+        return NSString(format: "%02ld:%02ld:%02ld", hours, minutes, seconds) as String
+    }
+    return NSString(format: "%02ld:%02ld", minutes, seconds) as String
+}
+
+@objc
 protocol APIControllerProtocol {
     func didReceiveAPIResults(results: NSDictionary)
+    optional func result(status: String, error_msg: String, error_code: Int, captcha_sid: String, captcha_img: String)
 }
 
 class APIController {
@@ -27,44 +40,74 @@ class APIController {
         self.delegate = delegate
     }
     
-    func get(path: String) {
+    func clientRequest(path: String) {
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         let url = NSURL(string: path)
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithURL(url!, completionHandler: {data, response, error -> Void in
-            println("Task completed")
+            if let json = self.CheckResponse(data){
+                self.delegate.didReceiveAPIResults(json)
+                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+            }
             if(error != nil) {
                 // If there is an error in the web request, print it to the console
                 println(error.localizedDescription)
             }
-            var err: NSError?
-            var jsonResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &err) as! NSDictionary
-            if(err != nil) {
-                // If there is an error parsing JSON, print it to the console
-                println("JSON Error \(err!.localizedDescription)")
-            }
-            if let results: NSArray = jsonResult["response"] as? NSArray{
-                self.delegate.didReceiveAPIResults(jsonResult) // THIS IS THE NEW LINE!!
-            }
-            
-            
         })
         task.resume()
     }
     
+    func CheckResponse(responseObject: AnyObject) -> NSDictionary? {
+        var err: NSError?
+        if let data = responseObject as? NSData {
+            if let json = NSJSONSerialization.JSONObjectWithData(data, options: .MutableLeaves, error: &err) as? NSDictionary {
+                //println(json)
+                if (json.objectForKey("response") as? NSArray != nil){
+                    return json
+                }
+                else if let error = json.objectForKey("error") as? NSDictionary {
+                    
+                    if let error_code = error["error_code"] as? Int {
+                        if let error_msg = error.objectForKey("error_msg") as? String {
+                            println("\(error_code)  \(error_msg)")
+
+                            switch error_code {
+                                case 14:
+                                    let captcha_sid = error["captcha_sid"] as? String
+                                    let captcha_img = error["captcha_img"] as? String
+                                    self.delegate.result!("error", error_msg: error_msg, error_code: error_code, captcha_sid: captcha_sid!, captcha_img: captcha_img!)
+                                    println("\(captcha_sid!)  \(captcha_img!)")
+                                case 6:
+                                    self.delegate.result!("error", error_msg: error_msg, error_code: error_code, captcha_sid: "", captcha_img: "")
+                                case 10:
+                                    self.delegate.result!("error", error_msg: error_msg, error_code: error_code, captcha_sid: "", captcha_img: "")
+                                default:break
+                            }
+                        }
+                    }
+                    
+                } else {
+                    println("Check response return error:\n \(json) \n \(err)")
+                }
+            }
+        }
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+        return nil
+    }
+    
     func searchVKFor(searchTerm: String, sort: String, count: String) {
         
-        // The iTunes API wants multiple terms separated by + symbols, so replace spaces with + signs
         let VKSearchTerm = searchTerm.stringByReplacingOccurrencesOfString(" ", withString: "+", options: NSStringCompareOptions.CaseInsensitiveSearch, range: nil)
         
-        // Now escape anything else that isn't URL-friendly
         if let escapedSearchTerm = VKSearchTerm.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding) {
             let urlPath = Config.VK_AUDIO_SEARCH + "?q=\(escapedSearchTerm)" + "&sort=\(sort)" + "&access_token=\(Config.ACCESS_TOKEN)" + "&count=\(count)"// + "&v=5.31"
-            get(urlPath)
+            clientRequest(urlPath)
         }
     }
     
-    func lookupAlbum(collectionId: Int) {
-        get("https://itunes.apple.com/lookup?id=\(collectionId)&entity=song")
+    func captchaWrite(captcha_sid: String, captcha_key: String){
+        let url = "\(Config.VK_AUDIO_SEARCH)?access_token=\(Config.ACCESS_TOKEN)&captcha_sid=\(captcha_sid)&captcha_key=\(captcha_key)"
+        clientRequest(url)
     }
     
 }
