@@ -46,6 +46,7 @@ class PlayMusic: UIViewController {
     override func viewWillAppear(animated: Bool) {
         refreshState()
         refreshPlayPauseButton()
+        ProgressView.shared.hideProgressView()
     }
     
     override func viewWillDisappear(animated: Bool) {

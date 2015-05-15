@@ -1,14 +1,5 @@
 //
 //  ImageLoader.swift
-//  vkMusic
-//
-//  Created by Atakishiyev Orazdurdy on 5/11/15.
-//  Copyright (c) 2015 veriloft. All rights reserved.
-//
-
-import Foundation
-//
-//  ImageLoader.swift
 //  Ertir
 //
 //  Created by Atakishiyev Orazdurdy on 2/18/15.

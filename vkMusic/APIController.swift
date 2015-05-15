@@ -26,6 +26,19 @@ func stringFromTimeInterval(interval: Int) -> String{
     return NSString(format: "%02ld:%02ld", minutes, seconds) as String
 }
 
+func getCountMusic(count: Int) -> Int{
+    switch(count){
+        case 0:
+        return 30
+        case 1: return 50
+        case 2: return 100
+        case 3: return 200
+        case 4: return 300
+        default: break
+    }
+    return 10
+}
+
 @objc
 protocol APIControllerProtocol {
     func didReceiveAPIResults(results: NSDictionary)
@@ -95,12 +108,18 @@ class APIController {
         return nil
     }
     
-    func searchVKFor(searchTerm: String, sort: String, count: String) {
+    func searchVKFor(searchTerm: String) {
         
         let VKSearchTerm = searchTerm.stringByReplacingOccurrencesOfString(" ", withString: "+", options: NSStringCompareOptions.CaseInsensitiveSearch, range: nil)
         
         if let escapedSearchTerm = VKSearchTerm.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding) {
-            let urlPath = Config.VK_AUDIO_SEARCH + "?q=\(escapedSearchTerm)" + "&sort=\(sort)" + "&access_token=\(Config.ACCESS_TOKEN)" + "&count=\(count)"// + "&v=5.31"
+            
+            let sort = NSUserDefaults.standardUserDefaults().integerForKey("sort")
+            let count = getCountMusic(NSUserDefaults.standardUserDefaults().integerForKey("count"))
+            let performer_only_bool = NSUserDefaults.standardUserDefaults().boolForKey("performer_only") ? 1 : 0
+            
+            var urlPath = "\(Config.VK_AUDIO_SEARCH)?access_token=\(Config.ACCESS_TOKEN)&q=\(escapedSearchTerm)&sort=\(sort)&count=\(count)&performer_only=\(performer_only_bool)"
+
             clientRequest(urlPath)
         }
     }

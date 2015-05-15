@@ -28,27 +28,22 @@ class SearchResultVC: UIViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         self.searchBar.delegate = self
         self.searchBar.searchBarStyle = UISearchBarStyle.Minimal
-        GetTrackList("Fink")
+        self.tableView.separatorColor = UIColor.grayColor()
+        self.tableView.tableFooterView = UIView(frame: CGRectZero)
+        GetTrackList("")
+        
+        self.tableView.addPullToRefresh({ [weak self] in
+            self?.GetTrackList("")
+            self?.tableView.stopPullToRefresh()
+        })
     }
     
     func GetTrackList(searchText: String){
-        api = APIController(delegate: self)
-        api!.searchVKFor(searchText, sort: "2", count: "300")
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return trackList.count
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        let cell = self.tableView.dequeueReusableCellWithIdentifier(kCellIdentifier) as! SearchResultCell
-        
-        let track = self.trackList[indexPath.row]
-        cell.title.text = "\(track.artist) - \(track.title)"
-        cell.duration.text = stringFromTimeInterval(track.duration)
-        
-        return cell
+        let popular_songs = (NSUserDefaults.standardUserDefaults().boolForKey("popular_songs"))
+        if popular_songs {
+            api = APIController(delegate: self)
+            api!.searchVKFor(searchText)
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -59,13 +54,6 @@ class SearchResultVC: UIViewController {
                 }
             }
         }
-    }
-    
-    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        cell.layer.transform = CATransform3DMakeScale(0.1,0.1,1)
-        UIView.animateWithDuration(0.25, animations: {
-            cell.layer.transform = CATransform3DMakeScale(1,1,1)
-        })
     }
 
     @IBAction func playBtnTapped(sender: UIButton) {
@@ -85,12 +73,12 @@ class SearchResultVC: UIViewController {
             
             AudioPlayer.sharedInstance.currentAudio = trackList[indexPath!.row]
             AudioPlayer.sharedInstance.play()
-            
+            ProgressView.shared.showProgressView(view)
             let popover = popoverVC.popoverPresentationController!
             popover.delegate = self
             var frame = UIScreen.mainScreen().applicationFrame
             popover.sourceView = view
-            var rect = CGRectMake(0 , frame.origin.y / 2, frame.width, frame.height)
+            var rect = CGRectMake(0 , frame.origin.y , frame.width, frame.height)
             popover.sourceRect = rect
             popover.permittedArrowDirections = UIPopoverArrowDirection.allZeros
             presentViewController(popoverVC, animated: true, completion: nil)
@@ -113,7 +101,6 @@ class SearchResultVC: UIViewController {
             presentViewController(popoverVC, animated: true, completion: nil)
         }
     }
-    
 }
 
 extension SearchResultVC: APIControllerProtocol {
@@ -168,10 +155,33 @@ extension SearchResultVC: UISearchBarDelegate {
 }
 
 extension SearchResultVC: UITableViewDataSource {
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return trackList.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let cell = self.tableView.dequeueReusableCellWithIdentifier(kCellIdentifier) as! SearchResultCell
+        
+        let track = self.trackList[indexPath.row]
+        cell.title.text = "\(track.artist) - \(track.title)"
+        cell.duration.text = stringFromTimeInterval(track.duration)
+        
+        return cell
+    }
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let currentAudio = trackList[indexPath.row]
        
         var selectedCell = self.tableView.cellForRowAtIndexPath(indexPath)
+    }
+    
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        cell.layer.transform = CATransform3DMakeScale(0.1,0.1,1)
+        UIView.animateWithDuration(0.25, animations: {
+            cell.layer.transform = CATransform3DMakeScale(1,1,1)
+        })
     }
 }
 
@@ -187,6 +197,6 @@ extension SearchResultVC: UIPopoverPresentationControllerDelegate {
     }
     
     func popoverPresentationControllerDidDismissPopover(popoverPresentationController: UIPopoverPresentationController) {
-        AudioPlayer.sharedInstance.stop()
+        AudioPlayer.sharedInstance.pause()
     }
 }
