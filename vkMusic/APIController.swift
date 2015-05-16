@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 struct Config {
     
@@ -37,6 +38,30 @@ func getCountMusic(count: Int) -> Int{
         default: break
     }
     return 10
+}
+
+func getAudioFileDurationFromName(filename: String) -> String {
+    var documentsPathh = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
+    let audioPathh = documentsPathh.stringByAppendingPathComponent("Audio")
+    let audioFileURL = NSURL(fileURLWithPath:audioPathh.stringByAppendingPathComponent(filename))
+    
+    var audioAsset = AVURLAsset(URL: audioFileURL, options: nil)
+    var audioDuration = audioAsset.duration;
+    var audioDurationSeconds = Int(CMTimeGetSeconds(audioDuration))
+    
+    return "\(stringFromTimeInterval(audioDurationSeconds))"
+}
+
+func getDownloadedAudioFiles(){
+    
+    let documentsUrl =  NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0] as! NSURL
+    
+    var documentsUrlAudio = NSURL(string: "\(documentsUrl)Audio/")
+    
+    if let directoryUrls =  NSFileManager.defaultManager().contentsOfDirectoryAtURL(documentsUrlAudio!, includingPropertiesForKeys: nil, options: NSDirectoryEnumerationOptions.SkipsSubdirectoryDescendants, error: nil) {
+        let mp3Files = directoryUrls.map(){ $0.lastPathComponent }.filter(){ $0.pathExtension == "mp3" }
+        println("MP3 FILES:\n" + mp3Files.description)
+    }
 }
 
 @objc

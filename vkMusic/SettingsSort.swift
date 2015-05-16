@@ -18,7 +18,6 @@ class SettingsSort: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        println(settingType)
         self.preferredContentSize = CGSizeMake(320,150)
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier:"Cell")
     }

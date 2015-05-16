@@ -37,7 +37,7 @@ class AudioPlayer: NSObject{
                 //let URL = caURL.scheme! + "://" + caURL.host! + caURL.path!
                 //let nURL = NSURL(string: URL)
                 var error: NSError?
-          
+
                 self.player.replaceCurrentItemWithPlayerItem(AVPlayerItem(URL: caURL))
                
                 switch error{
@@ -45,6 +45,7 @@ class AudioPlayer: NSObject{
                     println("Error while creating AVAudioPlayer with url \(self.currentAudio!.url): \(error!.localizedDescription)")
                     
                 case .None:
+                    println("none")
                     return
                 }
             default:

@@ -36,6 +36,7 @@ class SearchResultVC: UIViewController {
             self?.GetTrackList("")
             self?.tableView.stopPullToRefresh()
         })
+        getDownloadedAudioFiles()
     }
     
     func GetTrackList(searchText: String){
@@ -173,8 +174,8 @@ extension SearchResultVC: UITableViewDataSource {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let currentAudio = trackList[indexPath.row]
-       
-        var selectedCell = self.tableView.cellForRowAtIndexPath(indexPath)
+       println("sel")
+        VFCacheHandler.sharedInstance.downloadAudio(currentAudio)
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {

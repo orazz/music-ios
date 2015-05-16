@@ -26,7 +26,6 @@ class VFCacheHandler : NSObject, NSURLSessionDownloadDelegate {
         return Static.instance
     }
     
-    
     func downloadAudio(audio: TrackList){
         
         let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration(),
@@ -35,7 +34,8 @@ class VFCacheHandler : NSObject, NSURLSessionDownloadDelegate {
         let downloadTask = session.downloadTaskWithURL(audio.url, completionHandler: { (location: NSURL!, response: NSURLResponse!, error: NSError!) -> Void in
             switch (location, error){
             case (.Some, .None):
-                switch self.saveTemporaryAudioFromLocation(location, filename: response.suggestedFilename!) {
+                var filename = "\(audio.artist) - \(audio.title).mp3"
+                switch self.saveTemporaryAudioFromLocation(location, filename: filename) {
                 case .Some(let newLocation):
                     println("New file location \(newLocation)")
                     self.dictionary[audio.url] = newLocation
