@@ -32,6 +32,7 @@
 		8ED880081B067F1B008740B0 /* PullToRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED880041B067F1B008740B0 /* PullToRefreshView.swift */; };
 		8ED880091B067F1B008740B0 /* UIScrollViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED880051B067F1B008740B0 /* UIScrollViewExtension.swift */; };
 		8ED8800C1B0732D4008740B0 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8800B1B0732D4008740B0 /* Colors.swift */; };
+		8ED8800E1B085AB4008740B0 /* DownloadedFilesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED8800D1B085AB4008740B0 /* DownloadedFilesVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		8ED880041B067F1B008740B0 /* PullToRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullToRefreshView.swift; sourceTree = "<group>"; };
 		8ED880051B067F1B008740B0 /* UIScrollViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScrollViewExtension.swift; sourceTree = "<group>"; };
 		8ED8800B1B0732D4008740B0 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		8ED8800D1B085AB4008740B0 /* DownloadedFilesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadedFilesVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +198,7 @@
 				8E4BA9001B037FC500234C93 /* PlayMusic.swift */,
 				8ED87FF91B05DAE0008740B0 /* SettingsVC.swift */,
 				8ED87FFB1B062C3D008740B0 /* SettingsSort.swift */,
+				8ED8800D1B085AB4008740B0 /* DownloadedFilesVC.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 				8E4AAB861AFE4D0600808F28 /* TrackList.swift in Sources */,
 				8ED8800C1B0732D4008740B0 /* Colors.swift in Sources */,
 				8E4AAB651AFE44BE00808F28 /* SearchResultVC.swift in Sources */,
+				8ED8800E1B085AB4008740B0 /* DownloadedFilesVC.swift in Sources */,
 				8E8F17291B050915004F9972 /* ProgressView.swift in Sources */,
 				8E4BA9011B037FC500234C93 /* PlayMusic.swift in Sources */,
 				8E8F172B1B05100B004F9972 /* ImageLoader.swift in Sources */,

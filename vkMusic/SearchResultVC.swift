@@ -24,11 +24,12 @@ class SearchResultVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
         self.searchBar.delegate = self
         self.searchBar.searchBarStyle = UISearchBarStyle.Minimal
-        self.tableView.separatorColor = UIColor.grayColor()
+        self.tableView.separatorColor = UIColor.Colors.Grey.colorWithAlphaComponent(0.3)
         self.tableView.tableFooterView = UIView(frame: CGRectZero)
         GetTrackList("")
         

@@ -70,6 +70,30 @@ class TrackList {
     
 }
 
+class DownloadedFiles {
+    
+    var title: String
+    var duration: String
+    
+    init(title: String, duration: String){
+        self.title = title
+        self.duration = duration
+    }
+    
+    class func DownloadedFilesWithArray(files: NSArray) -> [DownloadedFiles] {
+        var fileList = [DownloadedFiles]()
+        for file in files {
+            let title = file as! String
+            let duration = getAudioFileDurationFromName(title)
+            
+            var newFile = DownloadedFiles(title: title, duration: duration)
+            fileList.append(newFile)
+        }
+        
+        return fileList
+    }
+}
+
 
 
 

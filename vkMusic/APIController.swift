@@ -52,7 +52,7 @@ func getAudioFileDurationFromName(filename: String) -> String {
     return "\(stringFromTimeInterval(audioDurationSeconds))"
 }
 
-func getDownloadedAudioFiles(){
+func getDownloadedAudioFiles() -> NSArray {
     
     let documentsUrl =  NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0] as! NSURL
     
@@ -60,8 +60,11 @@ func getDownloadedAudioFiles(){
     
     if let directoryUrls =  NSFileManager.defaultManager().contentsOfDirectoryAtURL(documentsUrlAudio!, includingPropertiesForKeys: nil, options: NSDirectoryEnumerationOptions.SkipsSubdirectoryDescendants, error: nil) {
         let mp3Files = directoryUrls.map(){ $0.lastPathComponent }.filter(){ $0.pathExtension == "mp3" }
-        println("MP3 FILES:\n" + mp3Files.description)
+        
+        return mp3Files
     }
+    
+    return []
 }
 
 @objc
