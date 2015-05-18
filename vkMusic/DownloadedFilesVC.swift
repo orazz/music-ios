@@ -57,6 +57,25 @@ class DownloadedFilesVC: UIViewController {
         self.SearchSettings()
     }
     
+    // MARK: - Segues
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "PlayMyMusic" {
+            if let indexPath = self.tableView.indexPathForSelectedRow() {
+                var destPlayMyMusic = (segue.destinationViewController as! PlayMyMusic)
+            destPlayMyMusic.audioFile = downloadedFiles[indexPath.row].title
+            destPlayMyMusic.audioFiles = downloadedFiles
+                destPlayMyMusic.currentSongIndex = indexPath.row
+                destPlayMyMusic.totalSongsCount = downloadedFiles.count
+                //let artistAlbum = artists[indexPath.section] as NSDictionary
+                //(segue.destinationViewController as! DetailViewController).songIndex = indexPath.row
+                //(segue.destinationViewController as! DetailViewController).artistAlbum = artistAlbum
+            }
+        }
+    }
+    
+    // MARK: - SearchSettings
+    
     func SearchSettings(){
         if self.downloadedFiles.count > 0 {
             self.originalSectionData = self.downloadedFiles
@@ -75,7 +94,7 @@ class DownloadedFilesVC: UIViewController {
     }
 }
 
-extension DownloadedFilesVC: UITableViewDataSource {
+extension DownloadedFilesVC: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return downloadedFiles.count

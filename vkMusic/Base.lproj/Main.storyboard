@@ -76,7 +76,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c5b-Ji-Duv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1687" y="1627"/>
+            <point key="canvasLocation" x="1717" y="912"/>
         </scene>
         <!--Item-->
         <scene sceneID="ixi-5G-ey4">
@@ -234,7 +234,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="meN-og-sw0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1001" y="251"/>
+            <point key="canvasLocation" x="1717" y="242"/>
         </scene>
         <!--Music-->
         <scene sceneID="oKZ-3A-PQB">
@@ -469,7 +469,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8pa-PQ-PZM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1687" y="927"/>
+            <point key="canvasLocation" x="2381" y="912"/>
         </scene>
         <!--Settings Sort-->
         <scene sceneID="WFa-eH-paJ">
@@ -515,7 +515,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sIE-3x-zVk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1687" y="246"/>
+            <point key="canvasLocation" x="2381" y="242"/>
         </scene>
         <!--Item 2-->
         <scene sceneID="0iX-S9-Le9">
@@ -648,6 +648,7 @@
                                             <outlet property="backViewPlayBtn" destination="C1o-uj-xfC" id="rZh-Vr-7PJ"/>
                                             <outlet property="lblDuration" destination="Uld-ij-ako" id="a2d-ZB-zzk"/>
                                             <outlet property="lblTitle" destination="NfW-H8-fHS" id="ASA-5i-6HJ"/>
+                                            <segue destination="I5m-NH-4Fp" kind="show" identifier="PlayMyMusic" id="dhv-fG-Zez"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -673,6 +674,58 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xKa-eG-umS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1001" y="1627"/>
+        </scene>
+        <!--Play My Music-->
+        <scene sceneID="6uU-Y9-BDn">
+            <objects>
+                <viewController storyboardIdentifier="PlayMyMusic" id="I5m-NH-4Fp" customClass="PlayMyMusic" customModule="vkMusic" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Meb-0D-c1X"/>
+                        <viewControllerLayoutGuide type="bottom" id="Tgl-eL-RMn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="n37-Mk-0cP">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O3l-gr-hru">
+                                <rect key="frame" x="277" y="285" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="playPauseButtonTapped:" destination="I5m-NH-4Fp" eventType="touchUpInside" id="56d-9w-lCM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iWy-uP-bqj">
+                                <rect key="frame" x="399" y="285" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="nextTrack:" destination="I5m-NH-4Fp" eventType="touchUpInside" id="UKC-c7-74w"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V51-g8-tTQ">
+                                <rect key="frame" x="162" y="285" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="O3l-gr-hru" firstAttribute="centerY" secondItem="n37-Mk-0cP" secondAttribute="centerY" id="BXJ-Zc-IYZ"/>
+                            <constraint firstItem="O3l-gr-hru" firstAttribute="centerX" secondItem="n37-Mk-0cP" secondAttribute="centerX" id="L4a-7F-VAY"/>
+                            <constraint firstItem="iWy-uP-bqj" firstAttribute="leading" secondItem="O3l-gr-hru" secondAttribute="trailing" constant="76" id="Oqw-yb-lwX"/>
+                            <constraint firstItem="iWy-uP-bqj" firstAttribute="baseline" secondItem="O3l-gr-hru" secondAttribute="baseline" id="QOd-3O-l6w"/>
+                            <constraint firstItem="V51-g8-tTQ" firstAttribute="baseline" secondItem="O3l-gr-hru" secondAttribute="baseline" id="dXO-R1-9vy"/>
+                            <constraint firstItem="O3l-gr-hru" firstAttribute="leading" secondItem="V51-g8-tTQ" secondAttribute="trailing" constant="69" id="ytw-fD-zAy"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jqE-a5-RCc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1717" y="1627"/>
         </scene>
     </scenes>
     <resources>
