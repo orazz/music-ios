@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8E4AAB5C1AFE44BE00808F28"
-               BuildableName = "music-ios.app"
-               BlueprintName = "music-ios.temp_caseinsensitive_rename"
-               ReferencedContainer = "container:music-ios.xcodeproj">
+               BuildableName = "music.app"
+               BlueprintName = "music"
+               ReferencedContainer = "container:music.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8E4AAB711AFE44BF00808F28"
-               BuildableName = "music-iosTests.xctest"
-               BlueprintName = "music-ios.temp_caseinsensitive_renameTests"
-               ReferencedContainer = "container:music-ios.xcodeproj">
+               BuildableName = "musicTests.xctest"
+               BlueprintName = "musicTests"
+               ReferencedContainer = "container:music.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8E4AAB711AFE44BF00808F28"
-               BuildableName = "music-iosTests.xctest"
-               BlueprintName = "music-ios.temp_caseinsensitive_renameTests"
-               ReferencedContainer = "container:music-ios.xcodeproj">
+               BuildableName = "musicTests.xctest"
+               BlueprintName = "musicTests"
+               ReferencedContainer = "container:music.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8E4AAB5C1AFE44BE00808F28"
-            BuildableName = "music-ios.app"
-            BlueprintName = "music-ios.temp_caseinsensitive_rename"
-            ReferencedContainer = "container:music-ios.xcodeproj">
+            BuildableName = "music.app"
+            BlueprintName = "music"
+            ReferencedContainer = "container:music.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -77,9 +77,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8E4AAB5C1AFE44BE00808F28"
-            BuildableName = "music-ios.app"
-            BlueprintName = "music-ios.temp_caseinsensitive_rename"
-            ReferencedContainer = "container:music-ios.xcodeproj">
+            BuildableName = "music.app"
+            BlueprintName = "music"
+            ReferencedContainer = "container:music.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -96,9 +96,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8E4AAB5C1AFE44BE00808F28"
-            BuildableName = "music-ios.app"
-            BlueprintName = "music-ios.temp_caseinsensitive_rename"
-            ReferencedContainer = "container:music-ios.xcodeproj">
+            BuildableName = "music.app"
+            BlueprintName = "music"
+            ReferencedContainer = "container:music.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

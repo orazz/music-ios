@@ -12,7 +12,7 @@
 		8E4AAB681AFE44BE00808F28 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E4AAB661AFE44BE00808F28 /* Main.storyboard */; };
 		8E4AAB6A1AFE44BE00808F28 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E4AAB691AFE44BE00808F28 /* Images.xcassets */; };
 		8E4AAB6D1AFE44BE00808F28 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E4AAB6B1AFE44BE00808F28 /* LaunchScreen.xib */; };
-		8E4AAB791AFE44BF00808F28 /* vkMusicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4AAB781AFE44BF00808F28 /* vkMusicTests.swift */; };
+		8E4AAB791AFE44BF00808F28 /* musicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4AAB781AFE44BF00808F28 /* musicTests.swift */; };
 		8E4AAB861AFE4D0600808F28 /* TrackList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4AAB851AFE4D0600808F28 /* TrackList.swift */; };
 		8E4AAB881AFE560200808F28 /* APIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4AAB871AFE560200808F28 /* APIController.swift */; };
 		8E4AAB8A1AFE58CF00808F28 /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4AAB891AFE58CF00808F28 /* SearchResultCell.swift */; };
@@ -43,22 +43,22 @@
 			containerPortal = 8E4AAB551AFE44BE00808F28 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 8E4AAB5C1AFE44BE00808F28;
-			remoteInfo = vkMusic;
+			remoteInfo = music;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		773E6928008805D7772818C7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		8E4AAB5D1AFE44BE00808F28 /* music-ios.temp_caseinsensitive_rename.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "music-ios.temp_caseinsensitive_rename.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E4AAB5D1AFE44BE00808F28 /* music.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = music.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E4AAB611AFE44BE00808F28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E4AAB621AFE44BE00808F28 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E4AAB641AFE44BE00808F28 /* SearchResultVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultVC.swift; sourceTree = "<group>"; };
 		8E4AAB671AFE44BE00808F28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8E4AAB691AFE44BE00808F28 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		8E4AAB6C1AFE44BE00808F28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		8E4AAB721AFE44BF00808F28 /* music-ios.temp_caseinsensitive_renameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "music-ios.temp_caseinsensitive_renameTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E4AAB721AFE44BF00808F28 /* musicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = musicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E4AAB771AFE44BF00808F28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8E4AAB781AFE44BF00808F28 /* vkMusicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vkMusicTests.swift; sourceTree = "<group>"; };
+		8E4AAB781AFE44BF00808F28 /* musicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = musicTests.swift; sourceTree = "<group>"; };
 		8E4AAB851AFE4D0600808F28 /* TrackList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackList.swift; sourceTree = "<group>"; };
 		8E4AAB871AFE560200808F28 /* APIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIController.swift; sourceTree = "<group>"; };
 		8E4AAB891AFE58CF00808F28 /* SearchResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
@@ -112,8 +112,8 @@
 		8E4AAB541AFE44BE00808F28 = {
 			isa = PBXGroup;
 			children = (
-				8E4AAB5F1AFE44BE00808F28 /* music-ios */,
-				8E4AAB751AFE44BF00808F28 /* music-ios */,
+				8E4AAB5F1AFE44BE00808F28 /* music */,
+				8E4AAB751AFE44BF00808F28 /* music */,
 				8E4AAB5E1AFE44BE00808F28 /* Products */,
 				86B384D6C08ADC06974C4F29 /* Frameworks */,
 			);
@@ -122,13 +122,13 @@
 		8E4AAB5E1AFE44BE00808F28 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8E4AAB5D1AFE44BE00808F28 /* music-ios.temp_caseinsensitive_rename.app */,
-				8E4AAB721AFE44BF00808F28 /* music-ios.temp_caseinsensitive_renameTests.xctest */,
+				8E4AAB5D1AFE44BE00808F28 /* music.app */,
+				8E4AAB721AFE44BF00808F28 /* musicTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8E4AAB5F1AFE44BE00808F28 /* music-ios */ = {
+		8E4AAB5F1AFE44BE00808F28 /* music */ = {
 			isa = PBXGroup;
 			children = (
 				8ED880011B067F09008740B0 /* Source */,
@@ -137,8 +137,8 @@
 				8E4AAB841AFE493F00808F28 /* Views */,
 				8E4AAB601AFE44BE00808F28 /* Supporting Files */,
 			);
-			name = "music-ios";
-			path = vkMusic;
+			name = music;
+			path = music;
 			sourceTree = "<group>";
 		};
 		8E4AAB601AFE44BE00808F28 /* Supporting Files */ = {
@@ -155,14 +155,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		8E4AAB751AFE44BF00808F28 /* music-ios */ = {
+		8E4AAB751AFE44BF00808F28 /* music */ = {
 			isa = PBXGroup;
 			children = (
-				8E4AAB781AFE44BF00808F28 /* vkMusicTests.swift */,
+				8E4AAB781AFE44BF00808F28 /* musicTests.swift */,
 				8E4AAB761AFE44BF00808F28 /* Supporting Files */,
 			);
-			name = "music-ios";
-			path = vkMusicTests;
+			name = music;
+			path = musicTests;
 			sourceTree = "<group>";
 		};
 		8E4AAB761AFE44BF00808F28 /* Supporting Files */ = {
@@ -225,9 +225,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8E4AAB5C1AFE44BE00808F28 /* music-ios.temp_caseinsensitive_rename */ = {
+		8E4AAB5C1AFE44BE00808F28 /* music */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8E4AAB7C1AFE44BF00808F28 /* Build configuration list for PBXNativeTarget "music-ios.temp_caseinsensitive_rename" */;
+			buildConfigurationList = 8E4AAB7C1AFE44BF00808F28 /* Build configuration list for PBXNativeTarget "music" */;
 			buildPhases = (
 				582250BC3B95B460164DBC08 /* Check Pods Manifest.lock */,
 				8E4AAB591AFE44BE00808F28 /* Sources */,
@@ -239,14 +239,14 @@
 			);
 			dependencies = (
 			);
-			name = "music-ios.temp_caseinsensitive_rename";
-			productName = vkMusic;
-			productReference = 8E4AAB5D1AFE44BE00808F28 /* music-ios.temp_caseinsensitive_rename.app */;
+			name = music;
+			productName = music;
+			productReference = 8E4AAB5D1AFE44BE00808F28 /* music.app */;
 			productType = "com.apple.product-type.application";
 		};
-		8E4AAB711AFE44BF00808F28 /* music-ios.temp_caseinsensitive_renameTests */ = {
+		8E4AAB711AFE44BF00808F28 /* musicTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8E4AAB7F1AFE44BF00808F28 /* Build configuration list for PBXNativeTarget "music-ios.temp_caseinsensitive_renameTests" */;
+			buildConfigurationList = 8E4AAB7F1AFE44BF00808F28 /* Build configuration list for PBXNativeTarget "musicTests" */;
 			buildPhases = (
 				8E4AAB6E1AFE44BF00808F28 /* Sources */,
 				8E4AAB6F1AFE44BF00808F28 /* Frameworks */,
@@ -257,9 +257,9 @@
 			dependencies = (
 				8E4AAB741AFE44BF00808F28 /* PBXTargetDependency */,
 			);
-			name = "music-ios.temp_caseinsensitive_renameTests";
-			productName = vkMusicTests;
-			productReference = 8E4AAB721AFE44BF00808F28 /* music-ios.temp_caseinsensitive_renameTests.xctest */;
+			name = musicTests;
+			productName = musicTests;
+			productReference = 8E4AAB721AFE44BF00808F28 /* musicTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -280,7 +280,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 8E4AAB581AFE44BE00808F28 /* Build configuration list for PBXProject "music-ios" */;
+			buildConfigurationList = 8E4AAB581AFE44BE00808F28 /* Build configuration list for PBXProject "music" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -293,8 +293,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8E4AAB5C1AFE44BE00808F28 /* music-ios.temp_caseinsensitive_rename */,
-				8E4AAB711AFE44BF00808F28 /* music-ios.temp_caseinsensitive_renameTests */,
+				8E4AAB5C1AFE44BE00808F28 /* music */,
+				8E4AAB711AFE44BF00808F28 /* musicTests */,
 			);
 		};
 /* End PBXProject section */
@@ -389,7 +389,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8E4AAB791AFE44BF00808F28 /* vkMusicTests.swift in Sources */,
+				8E4AAB791AFE44BF00808F28 /* musicTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,7 +398,7 @@
 /* Begin PBXTargetDependency section */
 		8E4AAB741AFE44BF00808F28 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8E4AAB5C1AFE44BE00808F28 /* music-ios.temp_caseinsensitive_rename */;
+			target = 8E4AAB5C1AFE44BE00808F28 /* music */;
 			targetProxy = 8E4AAB731AFE44BF00808F28 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -510,9 +510,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = vkMusic/Info.plist;
+				INFOPLIST_FILE = music/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "music-ios.temp_caseinsensitive_rename";
+				PRODUCT_NAME = music;
 			};
 			name = Debug;
 		};
@@ -520,9 +520,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = vkMusic/Info.plist;
+				INFOPLIST_FILE = music/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "music-ios.temp_caseinsensitive_rename";
+				PRODUCT_NAME = music;
 			};
 			name = Release;
 		};
@@ -538,10 +538,10 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = vkMusicTests/Info.plist;
+				INFOPLIST_FILE = musicTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "music-ios.temp_caseinsensitive_renameTests";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/vkMusic.app/vkMusic";
+				PRODUCT_NAME = musicTests;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/music.app/music";
 			};
 			name = Debug;
 		};
@@ -553,17 +553,17 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = vkMusicTests/Info.plist;
+				INFOPLIST_FILE = musicTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "music-ios.temp_caseinsensitive_renameTests";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/vkMusic.app/vkMusic";
+				PRODUCT_NAME = musicTests;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/music.app/music";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8E4AAB581AFE44BE00808F28 /* Build configuration list for PBXProject "music-ios" */ = {
+		8E4AAB581AFE44BE00808F28 /* Build configuration list for PBXProject "music" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8E4AAB7A1AFE44BF00808F28 /* Debug */,
@@ -572,7 +572,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8E4AAB7C1AFE44BF00808F28 /* Build configuration list for PBXNativeTarget "music-ios.temp_caseinsensitive_rename" */ = {
+		8E4AAB7C1AFE44BF00808F28 /* Build configuration list for PBXNativeTarget "music" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8E4AAB7D1AFE44BF00808F28 /* Debug */,
@@ -581,7 +581,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8E4AAB7F1AFE44BF00808F28 /* Build configuration list for PBXNativeTarget "music-ios.temp_caseinsensitive_renameTests" */ = {
+		8E4AAB7F1AFE44BF00808F28 /* Build configuration list for PBXNativeTarget "Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8E4AAB801AFE44BF00808F28 /* Debug */,
