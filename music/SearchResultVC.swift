@@ -45,6 +45,11 @@ class SearchResultVC: UIViewController {
         if popular_songs {
             api = APIController(delegate: self)
             api!.searchVKFor(searchText)
+        }else{
+            if(searchText != ""){
+                api = APIController(delegate: self)
+                api!.searchVKFor(searchText)
+            }
         }
     }
     

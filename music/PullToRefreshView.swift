@@ -62,7 +62,7 @@ public class PullToRefreshView: UIView {
         self.addSubview(indicator)
         
         self.autoresizingMask = UIViewAutoresizing.FlexibleWidth
-        self.backgroundColor = PullToRefreshConst.backgroundColor
+       // self.backgroundColor = PullToRefreshConst.backgroundColor
     }
    
     public override func layoutSubviews() {

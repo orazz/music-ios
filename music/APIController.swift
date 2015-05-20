@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import MediaPlayer
 
 struct Config {
     
@@ -65,6 +66,37 @@ func getDownloadedAudioFiles() -> NSArray {
     }
     
     return []
+}
+
+func getDownloadedAudioFiless() -> NSArray {
+    
+    let documentsUrl =  NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0] as! NSURL
+    
+    var documentsUrlAudio = NSURL(string: "\(documentsUrl)Audio/")
+    
+    if let directoryUrls =  NSFileManager.defaultManager().contentsOfDirectoryAtURL(documentsUrlAudio!, includingPropertiesForKeys: nil, options: NSDirectoryEnumerationOptions.SkipsSubdirectoryDescendants, error: nil) {
+        let mp3Files = directoryUrls.map(){ $0.lastPathComponent }.filter(){ $0.pathExtension == "mp3" }
+        
+        var mp3FilesAVURL = [PlaylistItem]()
+        
+        for mp3 in mp3Files {
+            mp3FilesAVURL.append(getAudioAsseUrlForFilename(mp3))
+        }
+        
+        return mp3FilesAVURL
+    }
+    
+    return []
+}
+
+func getAudioAsseUrlForFilename(audioFile: String) -> PlaylistItem {
+    var documentsPathh = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
+    let audioPathh = documentsPathh.stringByAppendingPathComponent("Audio")
+    let audioFileURL = NSURL(fileURLWithPath:audioPathh.stringByAppendingPathComponent(audioFile))
+    
+    var audioAsset = PlaylistItem(URL: audioFileURL)
+    
+    return audioAsset
 }
 
 @objc
