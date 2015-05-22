@@ -16,9 +16,20 @@ class SearchResultCell: UITableViewCell {
     @IBOutlet weak var artist: UILabel!
     @IBOutlet weak var viewBackPlay: UIView!
     @IBOutlet weak var viewBackDuration: UIView!
+    @IBOutlet weak var progressView: UIProgressView!
+    
+    var counter:Int = 0 {
+        didSet {
+            let fractionalProgress = Float(counter) / 100.0
+            let animated = counter != 0
+            
+            progressView.setProgress(fractionalProgress, animated: animated)
+        }
+    }
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        progressView.setProgress(0, animated: true)
     }
     
     required init(coder aDecoder: NSCoder) {

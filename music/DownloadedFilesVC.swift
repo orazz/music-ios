@@ -150,21 +150,11 @@ extension DownloadedFilesVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]?  {
         
         var deleteSongAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "delete", handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
-            println("delete")
-        })
-        // 1
-        var shareAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Share" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
-            // 2
-            let shareMenu = UIAlertController(title: nil, message: "Share using", preferredStyle: .ActionSheet)
-            
-            let twitterAction = UIAlertAction(title: "Twitter", style: UIAlertActionStyle.Default, handler: nil)
-            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
-            
-            shareMenu.addAction(twitterAction)
-            shareMenu.addAction(cancelAction)
-            
-            
-            self.presentViewController(shareMenu, animated: true, completion: nil)
+            var filename: AnyObject? = self.player?.playlist[indexPath.row].asset!.valueForKey("URL")
+            VFCacheHandler.sharedInstance.removeAudio(filename!.lastPathComponent)
+            self.player?.playlist.removeAtIndex(indexPath.row)
+    
+            self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         })
         return [deleteSongAction]
     }

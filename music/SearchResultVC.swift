@@ -10,7 +10,7 @@ import UIKit
 import MediaPlayer
 import AVFoundation
 
-class SearchResultVC: UIViewController {
+class SearchResultVC: UIViewController, DownloadManagerDelegate {
 
     let kCellIdentifier: String = "SearchResultCell"
     
@@ -21,9 +21,12 @@ class SearchResultVC: UIViewController {
     var api : APIController?
     var imageCache = [String : UIImage]()
     var trackList = [TrackList]()
+ 
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -38,6 +41,11 @@ class SearchResultVC: UIViewController {
             self?.tableView.stopPullToRefresh()
         })
         getDownloadedAudioFiles()
+        DownloadManager.sharedInstance.subscribe(self)
+    }
+
+    deinit {
+        DownloadManager.sharedInstance.unsubscribe(self)
     }
     
     func GetTrackList(searchText: String){
@@ -180,8 +188,11 @@ extension SearchResultVC: UITableViewDataSource {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let currentAudio = trackList[indexPath.row]
-       println("sel")
-        VFCacheHandler.sharedInstance.downloadAudio(currentAudio)
+
+        var documentsPath = (NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! NSString).stringByAppendingPathComponent("Audio")
+        let path = documentsPath.stringByAppendingPathComponent("\(currentAudio.artist) - \(currentAudio.title).mp3")
+        DownloadManager.sharedInstance.download(currentAudio.url, filePath: path, indexPath: indexPath)
+        
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -205,5 +216,30 @@ extension SearchResultVC: UIPopoverPresentationControllerDelegate {
     
     func popoverPresentationControllerDidDismissPopover(popoverPresentationController: UIPopoverPresentationController) {
         AudioPlayer.sharedInstance.pause()
+    }
+}
+
+extension SearchResultVC: DownloadManagerDelegate {
+    func downloadManager(downloadManager: DownloadManager, downloadDidFail url: NSURL, error: NSError, indexPath: NSIndexPath) {
+        println("Failed to download: \(url.absoluteString)")
+        var selectedCell = self.tableView.cellForRowAtIndexPath(indexPath) as? SearchResultCell
+        selectedCell?.progressView.hidden = true
+    }
+    
+    func downloadManager(downloadManager: DownloadManager, downloadDidStart url: NSURL, resumed: Bool, indexPath: NSIndexPath) {
+        println("Started to download: \(url.absoluteString)")
+    }
+    
+    func downloadManager(downloadManager: DownloadManager, downloadDidFinish url: NSURL, indexPath: NSIndexPath) {
+        println("Finished downloading: \(url.absoluteString)")
+        var selectedCell = self.tableView.cellForRowAtIndexPath(indexPath) as? SearchResultCell
+        selectedCell?.progressView.hidden = true
+    }
+    
+    func downloadManager(downloadManager: DownloadManager, downloadDidProgress url: NSURL, totalSize: UInt64, downloadedSize: UInt64, percentage: Double, averageDownloadSpeedInBytes: UInt64, timeRemaining: NSTimeInterval, indexPath: NSIndexPath) {
+        //println("Downloading \(url.absoluteString) (Percentage: \(percentage))")
+        var selectedCell = self.tableView.cellForRowAtIndexPath(indexPath) as? SearchResultCell
+        selectedCell?.progressView.hidden = false
+        selectedCell?.counter = Int(percentage * 100)
     }
 }

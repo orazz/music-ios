@@ -247,6 +247,10 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1vE-6y-8M5" id="zk2-or-RPj">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Xc8-kr-qma">
+                                                    <rect key="frame" x="0.0" y="57" width="600" height="2"/>
+                                                    <color key="tintColor" red="0.0003391158249" green="0.1609103556" blue="0.29963699490000001" alpha="0.72999999999999998" colorSpace="calibratedRGB"/>
+                                                </progressView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Eminem - Lose your self" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bj5-2x-rn5">
                                                     <rect key="frame" x="8" y="20" width="478" height="19"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="16"/>
@@ -311,6 +315,7 @@
                                             <constraints>
                                                 <constraint firstItem="dj9-EK-qeb" firstAttribute="centerY" secondItem="cDw-gF-FZr" secondAttribute="centerY" id="45s-15-ohi"/>
                                                 <constraint firstItem="bj5-2x-rn5" firstAttribute="top" secondItem="zk2-or-RPj" secondAttribute="topMargin" constant="12" id="56M-33-T8k"/>
+                                                <constraint firstAttribute="trailing" secondItem="Xc8-kr-qma" secondAttribute="trailing" id="95I-vh-Lxe"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="bj5-2x-rn5" secondAttribute="bottom" constant="13" id="B3w-8z-usD"/>
                                                 <constraint firstItem="bj5-2x-rn5" firstAttribute="leading" secondItem="zk2-or-RPj" secondAttribute="leadingMargin" id="BIz-L0-1op"/>
                                                 <constraint firstItem="dj9-EK-qeb" firstAttribute="trailing" secondItem="zk2-or-RPj" secondAttribute="trailingMargin" id="Qx5-Nb-qaA"/>
@@ -318,6 +323,8 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="bj5-2x-rn5" secondAttribute="bottom" constant="12" id="f9J-Ta-bAV"/>
                                                 <constraint firstItem="cDw-gF-FZr" firstAttribute="centerY" secondItem="bj5-2x-rn5" secondAttribute="centerY" constant="0.5" id="h7J-yA-NRi"/>
                                                 <constraint firstItem="dj9-EK-qeb" firstAttribute="leading" secondItem="cDw-gF-FZr" secondAttribute="trailing" constant="8" id="hfb-Lx-M0G"/>
+                                                <constraint firstItem="Xc8-kr-qma" firstAttribute="leading" secondItem="zk2-or-RPj" secondAttribute="leading" id="oTd-ip-v7P"/>
+                                                <constraint firstAttribute="bottom" secondItem="Xc8-kr-qma" secondAttribute="bottom" id="t4o-pU-hDy"/>
                                                 <constraint firstItem="bj5-2x-rn5" firstAttribute="top" secondItem="zk2-or-RPj" secondAttribute="topMargin" id="yPF-33-wQu"/>
                                             </constraints>
                                             <variation key="default">
@@ -329,6 +336,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="duration" destination="kh5-nb-fIw" id="bU8-Rm-9xN"/>
+                                            <outlet property="progressView" destination="Xc8-kr-qma" id="dRl-MJ-XcK"/>
                                             <outlet property="title" destination="bj5-2x-rn5" id="NrC-oS-XPu"/>
                                             <outlet property="viewBackDuration" destination="dj9-EK-qeb" id="gPZ-lH-5t4"/>
                                             <outlet property="viewBackPlay" destination="cDw-gF-FZr" id="tnT-3P-4Ka"/>
@@ -595,8 +603,8 @@
                                                         <variation key="default">
                                                             <mask key="constraints">
                                                                 <exclude reference="2m2-Kk-qg1"/>
-                                                                <exclude reference="h4M-Lr-iWs"/>
                                                                 <exclude reference="K5Z-nU-3Q6"/>
+                                                                <exclude reference="h4M-Lr-iWs"/>
                                                                 <exclude reference="7MX-do-AKV"/>
                                                                 <exclude reference="ycE-8z-dCX"/>
                                                             </mask>

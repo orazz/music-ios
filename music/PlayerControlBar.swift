@@ -21,7 +21,7 @@ class PlayerControlBar: UIToolbar {
         return space
         }()
     
-    var player: MusicPlayer?//PlaylistPlayer?
+    var player: MusicPlayer?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -47,14 +47,6 @@ class PlayerControlBar: UIToolbar {
         self.clipsToBounds = true
         
     }
-    
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-    // Drawing code
-    }
-    */
     
     func play() {
         MusicPlayer.initSession()

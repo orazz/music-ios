@@ -7,27 +7,39 @@
 //
 
 import Foundation
+import UIKit
 
-class VFCacheHandler : NSObject, NSURLSessionDownloadDelegate {
+public protocol VFCacheHandlerDelegate: class {
+    func downloadManager(result: String)
+}
+
+public class VFCacheHandler : NSObject, NSURLSessionDownloadDelegate {
     
     private var backgroundSession: NSURLSession?
     private var dictionary = Dictionary<NSURL, NSURL>()
+    
+    internal var delegates: [VFCacheHandlerDelegate] = []
     
     override init() {
         super.init()
         backgroundSession = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration(), delegate: self, delegateQueue: NSOperationQueue.mainQueue())
     }
-    
-    class var sharedInstance : VFCacheHandler {
+    public class var sharedInstance: VFCacheHandler {
+        struct Singleton {
+            static let instance = VFCacheHandler()
+        }
+        
+        return Singleton.instance
+    }
+   /* class var sharedInstance : VFCacheHandler {
         struct Static {
             static let instance : VFCacheHandler = VFCacheHandler()
         }
         
         return Static.instance
-    }
+    }*/
     
     func downloadAudio(audio: TrackList){
-        
         let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration(),
             delegate: self,
             delegateQueue: nil)
@@ -38,8 +50,12 @@ class VFCacheHandler : NSObject, NSURLSessionDownloadDelegate {
                 switch self.saveTemporaryAudioFromLocation(location, filename: filename) {
                 case .Some(let newLocation):
                     println("New file location \(newLocation)")
+                    self.sync {
+                        for delegate in self.delegates {
+                            delegate.downloadManager("--------------------\n")
+                        }
+                    }
                     self.dictionary[audio.url] = newLocation
-                    
                 case .None:
                     return
                 }
@@ -73,21 +89,31 @@ class VFCacheHandler : NSObject, NSURLSessionDownloadDelegate {
         }
     }*/
     
+    func removeAudio(audioFilename: String){
+        var documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
+        let audioPath = documentsPath.stringByAppendingPathComponent("Audio")
+        let audioFileURL = NSURL(fileURLWithPath:audioPath.stringByAppendingPathComponent(audioFilename))
+        var error: NSError?
+        if !NSFileManager.defaultManager().removeItemAtURL(audioFileURL!, error: &error) {
+            println("Error while removing audio from cache: \(error?.localizedDescription)")
+        } 
+    }
+    
     func localURLForAudio(audio: TrackList) -> NSURL?{
         return self.dictionary[audio.remoteUrl]
     }
     
     //MARK: - NSURLSession Delegate methods
     
-    func URLSession(session: NSURLSession, didBecomeInvalidWithError error: NSError?){
+    public func URLSession(session: NSURLSession, didBecomeInvalidWithError error: NSError?){
         
     }
     
-    func URLSession(session: NSURLSession, didReceiveChallenge challenge: NSURLAuthenticationChallenge, completionHandler: (NSURLSessionAuthChallengeDisposition, NSURLCredential!) -> Void){
+    public func URLSession(session: NSURLSession, didReceiveChallenge challenge: NSURLAuthenticationChallenge, completionHandler: (NSURLSessionAuthChallengeDisposition, NSURLCredential!) -> Void){
         completionHandler(NSURLSessionAuthChallengeDisposition.PerformDefaultHandling, nil)
     }
     
-    func URLSessionDidFinishEventsForBackgroundURLSession(session: NSURLSession){
+    public func URLSessionDidFinishEventsForBackgroundURLSession(session: NSURLSession){
         
     }
     
@@ -117,12 +143,12 @@ class VFCacheHandler : NSObject, NSURLSessionDownloadDelegate {
         }
     }
     
-    func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didFinishDownloadingToURL location: NSURL){
+    public func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didFinishDownloadingToURL location: NSURL){
         
     }
     
     /* Sent periodically to notify the delegate of download progress. */
-    func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64){
+    public func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64){
         
     }
     
@@ -131,10 +157,42 @@ class VFCacheHandler : NSObject, NSURLSessionDownloadDelegate {
     * NSURLSessionDownloadTaskResumeData key, whose value is the resume
     * data.
     */
-    func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didResumeAtOffset fileOffset: Int64, expectedTotalBytes: Int64){
+    public func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didResumeAtOffset fileOffset: Int64, expectedTotalBytes: Int64){
         
     }
+    internal let queue = dispatch_queue_create("io.persson.DownloadManager", DISPATCH_QUEUE_CONCURRENT)
     
+    internal func sync(closure: () -> Void) {
+        dispatch_sync(self.queue, closure)
+    }
     
+    internal func async(closure: () -> Void) {
+        dispatch_async(self.queue, closure)
+    }
+
+}
+extension VFCacheHandler {
     
+    public func subscribe(delegate: VFCacheHandlerDelegate) {
+        async {
+            for (index, d) in enumerate(self.delegates) {
+                if delegate === d {
+                    return
+                }
+            }
+            
+            self.delegates.append(delegate)
+        }
+    }
+    
+    public func unsubscribe(delegate: VFCacheHandlerDelegate) {
+        async {
+            for (index, d) in enumerate(self.delegates) {
+                if delegate === d {
+                    self.delegates.removeAtIndex(index)
+                    return
+                }
+            }
+        }
+}
 }

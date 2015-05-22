@@ -108,7 +108,6 @@ class PlayMusic: UIViewController {
     }
     
     @IBAction func PlayeBtn(sender: AnyObject) {
-        
 
         switch AudioPlayer.sharedInstance.state {
         case .Play:
