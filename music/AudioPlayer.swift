@@ -27,7 +27,7 @@ class AudioPlayer: NSObject{
     var state: PlaybackState = .Stop
     var option: PlaybackOption = .Continious
     
-    private var player: AVQueuePlayer = AVQueuePlayer()
+    private var player: AVQueuePlayer!
     var currentAudio: TrackList?{
         didSet{
             switch self.currentAudio {
@@ -37,15 +37,15 @@ class AudioPlayer: NSObject{
                 //let URL = caURL.scheme! + "://" + caURL.host! + caURL.path!
                 //let nURL = NSURL(string: URL)
                 var error: NSError?
-
-                self.player.replaceCurrentItemWithPlayerItem(AVPlayerItem(URL: caURL))
-               
+                self.player = AVQueuePlayer(playerItem: AVPlayerItem(URL: caURL))
+                //self.player.replaceCurrentItemWithPlayerItem(AVPlayerItem(URL: caURL))
+ 
                 switch error{
                 case .Some:
                     println("Error while creating AVAudioPlayer with url \(self.currentAudio!.url): \(error!.localizedDescription)")
                     
                 case .None:
-                    println("none")
+                    println("none\(error)")
                     return
                 }
             default:

@@ -49,9 +49,9 @@ class PlayerControlBar: UIToolbar {
     }
     
     func play() {
-        MusicPlayer.initSession()
         if let player = self.player {
             if player.paused() {
+                MusicPlayer.initSession()
                 player.play()
                 self.items?[3] = pauseButton!
             }

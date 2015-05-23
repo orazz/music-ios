@@ -52,7 +52,7 @@ class PlaylistItem: AVPlayerItem {
         if let titleMetadataItem = AVMetadataItem.metadataItemsFromArray(self.asset.commonMetadata, withKey: AVMetadataCommonKeyTitle, keySpace: AVMetadataKeySpaceCommon).first as? AVMetadataItem {
             return titleMetadataItem.value as? String
         }
-        return "untitled"
+        return nil
         }()
     
     lazy var artist: String? = {

@@ -53,7 +53,7 @@ class MusicPlayer: NSObject {
     */
     class func initSession() {
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "audioSessionInterrupted:", name: AVAudioSessionInterruptionNotification, object: AVAudioSession.sharedInstance())
+        //NSNotificationCenter.defaultCenter().addObserver(self, selector: "audioSessionInterrupted:", name: AVAudioSessionInterruptionNotification, object: AVAudioSession.sharedInstance())
         var error:NSError?
         
         AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, error: &error)
@@ -97,7 +97,7 @@ class MusicPlayer: NSObject {
     
     func playNextTrack(notification: NSNotification) {
         self.nextTrack()
-        avQueuePlayer.play()
+        //avQueuePlayer.play()
     }
     
     func nextTrack() {
@@ -177,64 +177,6 @@ class MusicPlayer: NSObject {
             }
         }
     }
-    /*
-    /**
-    Pause music
-    */
-    func pause() {
-        avQueuePlayer.pause()
-    }
-    
-    /**
-    Play music
-    */
-    func play() {
-        avQueuePlayer.play()
-    }
-    
-    func playSongWithId(songId:NSNumber, title:String, artist:String) {
-       /* MusicQuery().queryForSongWithId(songId, completionHandler: {[weak self] (result:MPMediaItem?) -> Void in
-            if let nonNilResult = result {
-                let assetUrl:NSURL = nonNilResult.valueForProperty(MPMediaItemPropertyAssetURL) as! NSURL
-                let avSongItem = AVPlayerItem(URL: assetUrl)
-                self!.avQueuePlayer.insertItem(avSongItem, afterItem: nil)
-                self!.play()
-                //display now playing info on control center
-                MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo = [MPMediaItemPropertyTitle: title, MPMediaItemPropertyArtist: artist]
-            }
-            })*/
-        
-    }
-    
-    func playSong(audioFile:String){
-        var documentsPathh = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
-        let audioPathh = documentsPathh.stringByAppendingPathComponent("Audio")
-        let audioFileURL = NSURL(fileURLWithPath:audioPathh.stringByAppendingPathComponent(audioFile))
-        
-        var audioAsset = AVURLAsset(URL: audioFileURL, options: nil)
-        
-        let avSongItem = AVPlayerItem(URL: audioFileURL)
-        self.avQueuePlayer.insertItem(avSongItem, afterItem: nil)
-        self.play()
-        //display now playing info on control center
-        MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo = [MPMediaItemPropertyTitle: audioFile, MPMediaItemPropertyArtist: "Music"]
-    }
-    
-    func NextTrack(audioFile:String){
-        var documentsPathh = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
-        let audioPathh = documentsPathh.stringByAppendingPathComponent("Audio")
-        let audioFileURL = NSURL(fileURLWithPath:audioPathh.stringByAppendingPathComponent(audioFile))
-        
-        var audioAsset = AVURLAsset(URL: audioFileURL, options: nil)
-        
-        let avSongItem = AVPlayerItem(URL: audioFileURL)
-        if avSongItem != self.avQueuePlayer.currentItem {
-            avSongItem.seekToTime(kCMTimeZero)
-        }
-        self.avQueuePlayer.replaceCurrentItemWithPlayerItem(avSongItem)
-        self.play()
-        MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo = [MPMediaItemPropertyTitle: audioFile, MPMediaItemPropertyArtist: "Music"]
-    }*/
     
     //MARK: - Notifications
     func audioSessionInterrupted(notification:NSNotification)

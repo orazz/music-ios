@@ -49,7 +49,7 @@ class CaptchaNeededVC: UIViewController {
 
 extension CaptchaNeededVC: APIControllerProtocol {
     
-    func didReceiveAPIResults(results: NSDictionary) {
+    func didReceiveAPIResults(results: NSDictionary, indexPath: NSIndexPath) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 }

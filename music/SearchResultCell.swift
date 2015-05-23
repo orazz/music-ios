@@ -12,11 +12,10 @@ class SearchResultCell: UITableViewCell {
     
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var duration: UILabel!
-    @IBOutlet weak var trackImg: UIImageView!
-    @IBOutlet weak var artist: UILabel!
     @IBOutlet weak var viewBackPlay: UIView!
     @IBOutlet weak var viewBackDuration: UIView!
     @IBOutlet weak var progressView: UIProgressView!
+    @IBOutlet weak var size: UILabel!
     
     var counter:Int = 0 {
         didSet {
@@ -47,5 +46,9 @@ class SearchResultCell: UITableViewCell {
         view.layer.borderColor = UIColor.grayColor().CGColor
         view.layer.borderWidth = 0.5
         view.clipsToBounds = true
+    }
+    
+    override func setSelected(selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
     }
 }

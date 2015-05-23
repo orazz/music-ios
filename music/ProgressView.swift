@@ -30,7 +30,7 @@ public class ProgressView {
         
         containerView.backgroundColor = UIColor.clearColor()//UIColor.blackColor().colorWithAlphaComponent(0.3)
         
-        progressView.frame = CGRectMake(0, 0, 320, 105)
+        progressView.frame = CGRectMake(0, 0, 80, 80)
         progressView.center = view.center
         progressView.backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.2)
         progressView.clipsToBounds = true
@@ -38,7 +38,6 @@ public class ProgressView {
         
         activityIndicator.frame = CGRectMake(0, 0, 80, 80)
         activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
-        activityIndicator.transform = CGAffineTransformMakeScale(1.75, 1.75)
         activityIndicator.center = CGPointMake(progressView.bounds.width / 2, progressView.bounds.height / 2)
         
         progressView.addSubview(activityIndicator)

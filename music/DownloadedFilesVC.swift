@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import MediaPlayer
 
-class DownloadedFilesVC: UIViewController, UIActionSheetDelegate {
+class DownloadedFilesVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet private var controlBar: PlayerControlBar?
@@ -32,7 +32,7 @@ class DownloadedFilesVC: UIViewController, UIActionSheetDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.blurAlbumArtworkImageView?.image = UIImage(named: "blue.jpg")
+        self.blurAlbumArtworkImageView?.image = UIImage(named: "black.jpg")
         player = MusicPlayer()
         player?.delegate = self
         controlBar?.player = player
@@ -45,6 +45,7 @@ class DownloadedFilesVC: UIViewController, UIActionSheetDelegate {
         self.tableView.separatorColor = UIColor.Colors.Grey.colorWithAlphaComponent(0.3)
         self.tableView.tableFooterView = UIView(frame: CGRectZero)
         self.searchBar.sizeToFit()
+        self.tableView.contentOffset = CGPointMake(0, self.searchBar.frame.size.height)
         self.view.backgroundColor = UIColor.clearColor()
         self.tableView.addPullToRefresh({ [weak self] in
             self?.getPlayList()
@@ -56,12 +57,14 @@ class DownloadedFilesVC: UIViewController, UIActionSheetDelegate {
         super.viewDidAppear(animated)
         UIApplication.sharedApplication().beginReceivingRemoteControlEvents()
         becomeFirstResponder()
+        println("didAppear")
     }
     
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         UIApplication.sharedApplication().endReceivingRemoteControlEvents()
         player?.pause()
+        println("disappear")
     }
     
     //MARK: - events received from phone
@@ -76,7 +79,7 @@ class DownloadedFilesVC: UIViewController, UIActionSheetDelegate {
     
     func getPlayList(){
         player?.playlist.removeAll(keepCapacity: false)
-        let items: [PlaylistItem] = getDownloadedAudioFiless() as! [PlaylistItem]
+        let items: [PlaylistItem] = getDownloadedAudioFiles() as! [PlaylistItem]
         self.originalSectionData = items
         self.currentPlayList = items
         player?.playlist.extend(items)
@@ -122,15 +125,22 @@ extension DownloadedFilesVC: UITableViewDataSource, UITableViewDelegate {
         }else{
             cell.albumArtworkImageView?.image = UIImage(named: "imgTrack")
         }
-        
-        cell.titleLabel?.text = item?.title
+        if item?.title != nil {
+            cell.titleLabel?.text = item?.title
+        }else{
+            var filename: AnyObject? = self.player?.playlist[indexPath.row].asset!.valueForKey("URL")
+            if let name = filename?.lastPathComponent.componentsSeparatedByString(" - "){
+                cell.titleLabel?.text = name[1]
+                cell.artistAndAlbumNameLabel?.text = name[0]
+            }
+        }
         if item?.artist != nil && item?.albumName != nil {
             cell.artistAndAlbumNameLabel?.text = "\(item!.artist!) | \(item!.albumName!)"
         }
         
         if player?.currentItem == item {
-            cell.titleLabel?.textColor = UIColor.blackColor().colorWithAlphaComponent(0.7)
-            cell.artistAndAlbumNameLabel?.textColor = UIColor.blackColor().colorWithAlphaComponent(0.7)
+            cell.titleLabel?.textColor = UIColor.grayColor().colorWithAlphaComponent(0.5)
+            cell.artistAndAlbumNameLabel?.textColor = UIColor.grayColor().colorWithAlphaComponent(0.5)
         } else {
             cell.titleLabel?.textColor = UIColor.whiteColor()
             cell.artistAndAlbumNameLabel?.textColor = UIColor.whiteColor()
@@ -151,7 +161,7 @@ extension DownloadedFilesVC: UITableViewDataSource, UITableViewDelegate {
         
         var deleteSongAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "delete", handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
             var filename: AnyObject? = self.player?.playlist[indexPath.row].asset!.valueForKey("URL")
-            VFCacheHandler.sharedInstance.removeAudio(filename!.lastPathComponent)
+            DownloadManager.sharedInstance.removeAudio(filename!.lastPathComponent)
             self.player?.playlist.removeAtIndex(indexPath.row)
     
             self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)

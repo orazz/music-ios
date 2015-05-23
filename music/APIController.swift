@@ -57,24 +57,7 @@ func getDownloadedAudioFiles() -> NSArray {
     
     let documentsUrl =  NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0] as! NSURL
     
-    var documentsUrlAudio = NSURL(string: "\(documentsUrl)Audio/")
-    
-    if let directoryUrls =  NSFileManager.defaultManager().contentsOfDirectoryAtURL(documentsUrlAudio!, includingPropertiesForKeys: nil, options: NSDirectoryEnumerationOptions.SkipsSubdirectoryDescendants, error: nil) {
-        let mp3Files = directoryUrls.map(){ $0.lastPathComponent }.filter(){ $0.pathExtension == "mp3" }
-        
-        return mp3Files
-    }
-    
-    return []
-}
-
-func getDownloadedAudioFiless() -> NSArray {
-    
-    let documentsUrl =  NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0] as! NSURL
-    
-    var documentsUrlAudio = NSURL(string: "\(documentsUrl)Audio/")
-    
-    if let directoryUrls =  NSFileManager.defaultManager().contentsOfDirectoryAtURL(documentsUrlAudio!, includingPropertiesForKeys: nil, options: NSDirectoryEnumerationOptions.SkipsSubdirectoryDescendants, error: nil) {
+    if let directoryUrls =  NSFileManager.defaultManager().contentsOfDirectoryAtURL(documentsUrl, includingPropertiesForKeys: nil, options: NSDirectoryEnumerationOptions.SkipsSubdirectoryDescendants, error: nil) {
         let mp3Files = directoryUrls.map(){ $0.lastPathComponent }.filter(){ $0.pathExtension == "mp3" }
         
         var mp3FilesAVURL = [PlaylistItem]()
@@ -91,8 +74,7 @@ func getDownloadedAudioFiless() -> NSArray {
 
 func getAudioAsseUrlForFilename(audioFile: String) -> PlaylistItem {
     var documentsPathh = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
-    let audioPathh = documentsPathh.stringByAppendingPathComponent("Audio")
-    let audioFileURL = NSURL(fileURLWithPath:audioPathh.stringByAppendingPathComponent(audioFile))
+    let audioFileURL = NSURL(fileURLWithPath:documentsPathh.stringByAppendingPathComponent(audioFile))
     
     var audioAsset = PlaylistItem(URL: audioFileURL)
     
@@ -101,7 +83,7 @@ func getAudioAsseUrlForFilename(audioFile: String) -> PlaylistItem {
 
 @objc
 protocol APIControllerProtocol {
-    func didReceiveAPIResults(results: NSDictionary)
+    func didReceiveAPIResults(results: NSDictionary, indexPath: NSIndexPath)
     optional func result(status: String, error_msg: String, error_code: Int, captcha_sid: String, captcha_img: String)
 }
 
@@ -119,7 +101,7 @@ class APIController {
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithURL(url!, completionHandler: {data, response, error -> Void in
             if let json = self.CheckResponse(data){
-                self.delegate.didReceiveAPIResults(json)
+                self.delegate.didReceiveAPIResults(json, indexPath: NSIndexPath())
                 UIApplication.sharedApplication().networkActivityIndicatorVisible = false
             }
             if(error != nil) {
@@ -182,6 +164,25 @@ class APIController {
 
             clientRequest(urlPath)
         }
+    }
+    
+    func audioInfo(audio: TrackList, indexPath: NSIndexPath){
+        
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithURL(audio.url, completionHandler: {data, response, error -> Void in
+            if let httpResponse = response as? NSHTTPURLResponse {
+                //println(httpResponse)
+                if let contentType = httpResponse.allHeaderFields["Content-Length"] as? String {
+                    //println(contentType)
+                    self.delegate.didReceiveAPIResults(["length": contentType, "title": audio.title], indexPath: indexPath)
+                }
+            }
+            if(error != nil) {
+                // If there is an error in the web request, print it to the console
+                println(error.localizedDescription)
+            }
+        })
+        task.resume()
     }
     
     func captchaWrite(captcha_sid: String, captcha_key: String){

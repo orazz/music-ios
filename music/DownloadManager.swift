@@ -218,20 +218,23 @@ extension DownloadManager {
         return result
     }
     
-    public func download(url: NSURL, filePath: String, indexPath: NSIndexPath) -> Bool {
-        if self.isDownloading(url) {
+    public func download(currentAudio: TrackList, indexPath: NSIndexPath) -> Bool {
+        var documentsPath = (NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! NSString)//.stringByAppendingPathComponent("Audio")
+        let path = documentsPath.stringByAppendingPathComponent("\(currentAudio.artist) - \(currentAudio.title).mp3")
+        
+        if self.isDownloading(currentAudio.url) {
             return true
         }
     
-        var request = NSMutableURLRequest(URL: url)
+        var request = NSMutableURLRequest(URL: currentAudio.url)
         
-        if let dict: NSDictionary = NSFileManager.defaultManager().attributesOfItemAtPath(filePath, error: nil) {
+        if let dict: NSDictionary = NSFileManager.defaultManager().attributesOfItemAtPath(path, error: nil) {
             request.addValue("bytes=\(dict.fileSize())-", forHTTPHeaderField: "Range")
         }
         
         if let connection = NSURLConnection(request: request, delegate: self, startImmediately: false) {
             sync {
-                self.downloads.append(Download(url: url, filePath: filePath, totalSize: 0, connection: connection, indexPath: indexPath))
+                self.downloads.append(Download(url: currentAudio.url, filePath: path, totalSize: 0, connection: connection, indexPath: indexPath))
             }
             
             connection.scheduleInRunLoop(NSRunLoop.mainRunLoop(), forMode: NSDefaultRunLoopMode)
@@ -241,6 +244,16 @@ extension DownloadManager {
         }
         
         return false
+    }
+    
+    public func removeAudio(audioFilename: String){
+        var documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
+        //let audioPath = documentsPath.stringByAppendingPathComponent("Audio")
+        let audioFileURL = NSURL(fileURLWithPath:documentsPath.stringByAppendingPathComponent(audioFilename))
+        var error: NSError?
+        if !NSFileManager.defaultManager().removeItemAtURL(audioFileURL!, error: &error) {
+            println("Error while removing audio from cache: \(error?.localizedDescription)")
+        }
     }
     
     public func stopDownloading(url: NSURL) {

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TrackList {
+public class TrackList {
     
     var aid: Int
     var owner_id: Int
@@ -32,13 +32,7 @@ class TrackList {
     
     var url: NSURL {
         get{
-            switch VFCacheHandler.sharedInstance.localURLForAudio(self) {
-            case .Some:
-                return VFCacheHandler.sharedInstance.localURLForAudio(self)!
-                
-            case .None:
-                return self.remoteUrl
-            }
+            return self.remoteUrl
         }
     }
     

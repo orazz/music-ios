@@ -21,8 +21,8 @@ class SearchResultVC: UIViewController, DownloadManagerDelegate {
     var api : APIController?
     var imageCache = [String : UIImage]()
     var trackList = [TrackList]()
- 
-    
+    var titleFile = "Indir"
+    var cacheFileSize: NSCache!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +42,7 @@ class SearchResultVC: UIViewController, DownloadManagerDelegate {
         })
         getDownloadedAudioFiles()
         DownloadManager.sharedInstance.subscribe(self)
+        cacheFileSize = NSCache()
     }
 
     deinit {
@@ -80,13 +81,18 @@ class SearchResultVC: UIViewController, DownloadManagerDelegate {
         
         let indexPath = self.tableView.indexPathForCell(cell)
         
+        showPopover(indexPath!)
+    }
+    
+    func showPopover(indexPath: NSIndexPath)
+    {
         if let popoverVC = self.storyboard?.instantiateViewControllerWithIdentifier("PlayMusic") as? PlayMusic
         {
             popoverVC.modalPresentationStyle = .Popover
             popoverVC.trackList = self.trackList
-            popoverVC.index = indexPath!.row
+            popoverVC.index = indexPath.row
             
-            AudioPlayer.sharedInstance.currentAudio = trackList[indexPath!.row]
+            AudioPlayer.sharedInstance.currentAudio = trackList[indexPath.row]
             AudioPlayer.sharedInstance.play()
             ProgressView.shared.showProgressView(view)
             let popover = popoverVC.popoverPresentationController!
@@ -99,35 +105,26 @@ class SearchResultVC: UIViewController, DownloadManagerDelegate {
             presentViewController(popoverVC, animated: true, completion: nil)
         }
     }
-    
-    func showPopover(base: UIView, text: String)
-    {
-        if let popoverVC = self.storyboard?.instantiateViewControllerWithIdentifier("PlayMusic") as? PlayMusic
-        {
-            popoverVC.modalPresentationStyle = .Popover
-            popoverVC.trackList = self.trackList
-            let popover = popoverVC.popoverPresentationController!
-            popover.delegate = self
-            var frame = UIScreen.mainScreen().applicationFrame
-            popover.sourceView = view
-            var rect = CGRectMake(0 , frame.origin.y / 2, frame.width, frame.height)
-            popover.sourceRect = rect
-            popover.permittedArrowDirections = UIPopoverArrowDirection.allZeros
-            presentViewController(popoverVC, animated: true, completion: nil)
-        }
-    }
 }
 
 extension SearchResultVC: APIControllerProtocol {
     
-    func didReceiveAPIResults(results: NSDictionary) {
-        var resultsArr = results["response"] as! NSArray
-        //println(resultsArr)
-        dispatch_async(dispatch_get_main_queue(), {
-            self.trackList = TrackList.TrackListWithJSON(resultsArr)
-            self.tableView!.reloadData()
-            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-        })
+    func didReceiveAPIResults(results: NSDictionary, indexPath: NSIndexPath) {
+        if let resultsArr = results["response"] as? NSArray {
+            //println(resultsArr)
+            dispatch_async(dispatch_get_main_queue(), {
+                self.trackList = TrackList.TrackListWithJSON(resultsArr)
+                self.tableView!.reloadData()
+                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+            })
+        }
+        if let length = results["length"] as? String {
+            println(length)
+            dispatch_async(dispatch_get_main_queue(), {
+            self.cacheFileSize.setObject("\((length as NSString).doubleValue/1024)", forKey: results["title"]!)
+            self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+            })
+        }
     }
     
     func result(status: String, error_msg: String, error_code: Int, captcha_sid: String, captcha_img: String)
@@ -169,7 +166,7 @@ extension SearchResultVC: UISearchBarDelegate {
 
 }
 
-extension SearchResultVC: UITableViewDataSource {
+extension SearchResultVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return trackList.count
@@ -182,25 +179,74 @@ extension SearchResultVC: UITableViewDataSource {
         let track = self.trackList[indexPath.row]
         cell.title.text = "\(track.artist) - \(track.title)"
         cell.duration.text = stringFromTimeInterval(track.duration)
+        cell.progressView.hidden = true
+        cell.size.hidden = true
+        var selectedBack = UIView();
+        selectedBack.backgroundColor = UIColor(hex: 0x9E9E9E, alpha: 0.1)
+        cell.selectedBackgroundView = selectedBack
+
+        if let size: String = cacheFileSize.objectForKey(track.title) as? String {
+            cell.size.hidden = false
+            cell.size.text = (NSString(format:"%.2f", (size as NSString).doubleValue/1024) as String) + " mb."
+        }else{
+            cell.size.text = nil
+        }
         
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let currentAudio = trackList[indexPath.row]
-
-        var documentsPath = (NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! NSString).stringByAppendingPathComponent("Audio")
-        let path = documentsPath.stringByAppendingPathComponent("\(currentAudio.artist) - \(currentAudio.title).mp3")
-        DownloadManager.sharedInstance.download(currentAudio.url, filePath: path, indexPath: indexPath)
+        var cell = tableView.cellForRowAtIndexPath(indexPath) as! SearchResultCell
         
+        cell.selectedBackgroundView.backgroundColor = UIColor(hex: 0x9E9E9E, alpha: 0.1)
+        cell.viewBackPlay.backgroundColor = UIColor.Colors.BlueGrey.colorWithAlphaComponent(0.7)
+        cell.viewBackDuration.backgroundColor = UIColor.Colors.BlueGrey.colorWithAlphaComponent(0.7)
+        dispatch_async(dispatch_get_main_queue(), {
+            if(self.cacheFileSize.objectForKey(currentAudio.title) == nil) {
+                self.api?.audioInfo(currentAudio, indexPath: indexPath)
+            }
+        })
+        let shareMenu = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+        if let presentationController = shareMenu.popoverPresentationController {
+            var selectedCell = tableView.cellForRowAtIndexPath(indexPath)
+            presentationController.sourceView = selectedCell?.contentView
+            presentationController.sourceRect = selectedCell!.contentView.frame
+        }
+        let download = UIAlertAction(title: self.titleFile, style: .Default, handler: {
+            (action:UIAlertAction!) -> Void in
+            DownloadManager.sharedInstance.download(currentAudio, indexPath: indexPath)
+        })
+        let play = UIAlertAction(title: "Diňle", style: .Default, handler: {
+            (action:UIAlertAction!) -> Void in
+            self.showPopover(indexPath)
+        })
+        let share = UIAlertAction(title: "Paýlaş", style: .Default, handler: {
+            (action:UIAlertAction!) -> Void in
+            let textToShare = "Music"
+            
+            if let myWebsite = NSURL(string: "http://www.alashow.com/music")
+            {
+                let objectsToShare = [textToShare, myWebsite]
+                let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+                
+                self.presentViewController(activityVC, animated: true, completion: nil)
+            }
+        })
+        let cancelAction = UIAlertAction(title: "Beset", style: UIAlertActionStyle.Cancel, handler: nil)
+        
+        shareMenu.addAction(download)
+        shareMenu.addAction(play)
+        shareMenu.addAction(share)
+        shareMenu.addAction(cancelAction)
+
+        self.presentViewController(shareMenu, animated: true, completion: nil)
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        cell.layer.transform = CATransform3DMakeScale(0.1,0.1,1)
-        UIView.animateWithDuration(0.25, animations: {
-            cell.layer.transform = CATransform3DMakeScale(1,1,1)
-        })
+        cell.backgroundColor = UIColor.clearColor()
     }
+    
 }
 
 extension SearchResultVC: UIScrollViewDelegate {
