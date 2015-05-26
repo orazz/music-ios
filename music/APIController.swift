@@ -14,7 +14,8 @@ struct Config {
     
     static let VK_SERVER = "https://api.vk.com/"
     static let VK_AUDIO_SEARCH = VK_SERVER + "method/audio.search"
-    static let ACCESS_TOKEN =  "3e2f0b5c127bc8bccc5e4b20eeb55117c0c09079c9e6a4788735f9c9615ccf628cc7f1919bf0acb329c2b"
+    static let ACCESS_TOKEN =  "23e2f0b5c127bc8bccc5e4b20eeb55117c0c09079c9e6a4788735f9c9615ccf628cc7f1919bf0acb329c2b"
+    static let GET_TOKEN = "http://alashov.com/music/app/get_token.php"
 }
 
 func stringFromTimeInterval(interval: Int) -> String{
@@ -112,6 +113,25 @@ class APIController {
         task.resume()
     }
     
+    func getToken(path: String) {
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        let url = NSURL(string: path)
+        let session = NSURLSession.sharedSession()
+        var err: NSError?
+        let task = session.dataTaskWithURL(url!, completionHandler: {data, response, error -> Void in
+            if let json = NSJSONSerialization.JSONObjectWithData(data, options: .MutableLeaves, error: &err) as? NSDictionary {
+                var newToken: String = json.valueForKey("vkToken") as! String
+                NSUserDefaults.standardUserDefaults().setObject(newToken, forKey: "vkToken")
+                self.delegate.didReceiveAPIResults(["status":"ok"], indexPath: NSIndexPath())
+                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+            }
+            if(error != nil) {
+                println(error.localizedDescription)
+            }
+        })
+        task.resume()
+    }
+    
     func CheckResponse(responseObject: AnyObject) -> NSDictionary? {
         var err: NSError?
         if let data = responseObject as? NSData {
@@ -156,13 +176,25 @@ class APIController {
         
         if let escapedSearchTerm = VKSearchTerm.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding) {
             
-            let sort = NSUserDefaults.standardUserDefaults().integerForKey("sort")
-            let count = getCountMusic(NSUserDefaults.standardUserDefaults().integerForKey("count"))
+            var sort = NSUserDefaults.standardUserDefaults().integerForKey("sort")
+            var count = getCountMusic(NSUserDefaults.standardUserDefaults().integerForKey("count"))
             let performer_only_bool = NSUserDefaults.standardUserDefaults().boolForKey("performer_only") ? 1 : 0
+            if count < 0 {
+                NSUserDefaults.standardUserDefaults().setInteger(30, forKey: "count")
+                count = 30
+            }
+            if sort < 0 {
+                NSUserDefaults.standardUserDefaults().setInteger(2, forKey: "sort")
+                sort = 2
+            }
             
-            var urlPath = "\(Config.VK_AUDIO_SEARCH)?access_token=\(Config.ACCESS_TOKEN)&q=\(escapedSearchTerm)&sort=\(sort)&count=\(count)&performer_only=\(performer_only_bool)"
-
-            clientRequest(urlPath)
+            if let vkToken: String = NSUserDefaults.standardUserDefaults().valueForKey("vkToken") as? String {
+                var urlPath = "\(Config.VK_AUDIO_SEARCH)?access_token=\(vkToken)&q=\(escapedSearchTerm)&sort=\(sort)&count=\(count)&performer_only=\(performer_only_bool)"
+                clientRequest(urlPath)
+            }else{
+                var urlPath = "\(Config.VK_AUDIO_SEARCH)?access_token=\(Config.ACCESS_TOKEN)&q=\(escapedSearchTerm)&sort=\(sort)&count=\(count)&performer_only=\(performer_only_bool)"
+                clientRequest(urlPath)
+            }
         }
     }
     
@@ -178,7 +210,6 @@ class APIController {
                 }
             }
             if(error != nil) {
-                // If there is an error in the web request, print it to the console
                 println(error.localizedDescription)
             }
         })
@@ -186,8 +217,13 @@ class APIController {
     }
     
     func captchaWrite(captcha_sid: String, captcha_key: String){
-        let url = "\(Config.VK_AUDIO_SEARCH)?access_token=\(Config.ACCESS_TOKEN)&captcha_sid=\(captcha_sid)&captcha_key=\(captcha_key)"
-        clientRequest(url)
+        if let vkToken: String = NSUserDefaults.standardUserDefaults().valueForKey("vkToken") as? String {
+            let url = "\(Config.VK_AUDIO_SEARCH)?access_token=\(vkToken)&captcha_sid=\(captcha_sid)&captcha_key=\(captcha_key)"
+            clientRequest(url)
+        }else{
+            let url = "\(Config.VK_AUDIO_SEARCH)?access_token=\(Config.ACCESS_TOKEN)&captcha_sid=\(captcha_sid)&captcha_key=\(captcha_key)"
+            clientRequest(url)
+        }
     }
     
 }

@@ -20,6 +20,8 @@ class CaptchaNeededVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.newCaptchaImgBtn.titleLabel?.text = NSLocalizedString("reload", comment: "Reload")
+        self.sendBtn.titleLabel?.text = NSLocalizedString("send", comment: "Send")
         let escpaedurl = captchaImgUrl.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
         ImageLoader.sharedLoader.imageForUrl(escpaedurl!, completionHandler: {(image: UIImage?, url: String) in
             if image != nil {

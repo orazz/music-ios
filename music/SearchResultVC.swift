@@ -53,6 +53,7 @@ class SearchResultVC: UIViewController, DownloadManagerDelegate {
     
     func GetTrackList(searchText: String){
         let popular_songs = (NSUserDefaults.standardUserDefaults().boolForKey("popular_songs"))
+
         if popular_songs {
             api = APIController(delegate: self)
             api!.searchVKFor(searchText)
@@ -127,6 +128,9 @@ extension SearchResultVC: APIControllerProtocol {
             self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
             })
         }
+        if let status = results["status"] as? String {
+            println(status)
+        }
     }
     
     func result(status: String, error_msg: String, error_code: Int, captcha_sid: String, captcha_img: String)
@@ -142,6 +146,11 @@ extension SearchResultVC: APIControllerProtocol {
         
         if(error_code == 6){
             self.GetTrackList("Fink")
+        }
+        
+        if(error_code == 10){
+            self.api?.getToken(Config.GET_TOKEN)
+            GetTrackList("")
         }
         
     }
