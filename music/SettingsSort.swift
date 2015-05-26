@@ -12,12 +12,14 @@ class SettingsSort: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var sortirovka = ["Goşulan wagty boýunça", "Uzynlygy boýunça", "Meşhurlygy boýunça"]
-    var counts = ["30 sany", "50 sany", "100 sany", "200 sany", "300 sany"]
+    var sortirovka = [NSLocalizedString("byDateAdded", comment: "By date added"), NSLocalizedString("byDuration", comment: "By duration"), NSLocalizedString("byPopularity", comment: "By popularity")]
+    var tracks = NSLocalizedString("tracks", comment: "Tracks") as String
+    var counts = [String]()
     var settingType: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        counts = ["30 \(tracks)", "50 \(tracks)", "100 \(tracks)", "200 \(tracks)", "300 \(tracks)"]
         self.preferredContentSize = CGSizeMake(320,150)
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier:"Cell")
     }
@@ -35,6 +37,7 @@ extension SettingsSort: UITableViewDataSource, UITableViewDelegate {
             return sortirovka.count
         case 1:
             return counts.count
+            
         default:break
         }
         return result
@@ -43,10 +46,10 @@ extension SettingsSort: UITableViewDataSource, UITableViewDelegate {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let section = indexPath.section
         let row = indexPath.row
-        if (settingType == 0)
-        {
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath:indexPath) as! UITableViewCell
+        if(settingType == 0){
+            
             let sort = NSUserDefaults.standardUserDefaults().integerForKey("sort")
-            let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath:indexPath) as! UITableViewCell
             cell.textLabel?.text = sortirovka[indexPath.row]
             cell.accessoryType = (sort == row ?
                 .Checkmark :
@@ -54,7 +57,6 @@ extension SettingsSort: UITableViewDataSource, UITableViewDelegate {
             return cell
         }else{
             let count = NSUserDefaults.standardUserDefaults().integerForKey("count")
-            let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath:indexPath) as! UITableViewCell
             cell.textLabel?.text = counts[indexPath.row]
             cell.accessoryType = (count == row ?
                 .Checkmark :

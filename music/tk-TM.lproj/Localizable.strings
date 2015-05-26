@@ -1,0 +1,31 @@
+/* 
+  Localizable.strings
+  Music
+
+  Created by Atakishiyev Orazdurdy on 5/25/15.
+  Copyright (c) 2015 veriloft. All rights reserved.
+*/
+
+settings = "Sazlamalar";
+player = "Player";
+search = "Gözleg";
+sort = "Sortirowka";
+byDateAdded = "Goşulan wagty boýunça";
+byDuration = "Uzynlygy boýunça";
+byPopularity = "Meşhurlygy boýunça";
+count = "Sany";
+countText = "Her gözlegde aýdymlaryň görkeziljek sany";
+tracks = "sany";
+performerOnly = "Diňe aýdymlaryň ady boýunça";
+performerOnlyText = "Gözlegde diňe aýdymçylaryň ady boýunça gözle";
+popularMusic = "Meşhur aýdymlar";
+popularMusicText = "Programma açylanda meşhur aýdymlary görkez";
+language = "Dil";
+download = "Indir";
+play = "Diňle";
+share = "Paýlaş";
+send = "Iber";
+reload = "Täzele";
+advice = "Heý! Şu aýdymy diňlemegi maslahat berýärin!";
+cancel = "Beset";
+general = "Umumy";

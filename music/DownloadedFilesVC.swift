@@ -17,6 +17,8 @@ class DownloadedFilesVC: UIViewController {
     @IBOutlet private var volumeView: MPVolumeView?
     @IBOutlet private var blurAlbumArtworkImageView: UIImageView?
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var shuffleBtn: MKButton!
+    @IBOutlet weak var repeatBtn: MKButton!
     
     var downloadedFiles = [PlaylistItem]()
     var kCellIdentifier = "PlaylistTableViewCell"
@@ -33,6 +35,7 @@ class DownloadedFilesVC: UIViewController {
         super.viewDidLoad()
         
         self.blurAlbumArtworkImageView?.image = UIImage(named: "black.jpg")
+        self.repeatBtn.setImage(UIImage(named: "repeat"), forState: UIControlState.Normal)
         player = MusicPlayer()
         player?.delegate = self
         controlBar?.player = player
@@ -45,7 +48,7 @@ class DownloadedFilesVC: UIViewController {
         self.tableView.separatorColor = UIColor.Colors.Grey.colorWithAlphaComponent(0.3)
         self.tableView.tableFooterView = UIView(frame: CGRectZero)
         self.searchBar.sizeToFit()
-        self.tableView.contentOffset = CGPointMake(0, self.searchBar.frame.size.height)
+        repeat()
         self.view.backgroundColor = UIColor.clearColor()
         self.tableView.addPullToRefresh({ [weak self] in
             self?.getPlayList()
@@ -57,14 +60,15 @@ class DownloadedFilesVC: UIViewController {
         super.viewDidAppear(animated)
         UIApplication.sharedApplication().beginReceivingRemoteControlEvents()
         becomeFirstResponder()
-        println("didAppear")
+        self.tableView.setContentOffset(
+            CGPointMake(0, 44),
+            animated:true)
     }
     
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         UIApplication.sharedApplication().endReceivingRemoteControlEvents()
         player?.pause()
-        println("disappear")
     }
     
     //MARK: - events received from phone
@@ -84,12 +88,45 @@ class DownloadedFilesVC: UIViewController {
         self.currentPlayList = items
         player?.playlist.extend(items)
         self.tableView.reloadData()
+
+        
     }
     
     func shufflePlaylist() {
         player?.shuffle()
         tableView?.reloadData()
     }
+    
+    func repeat(){
+        var repeat: Bool = false
+        if let bool = NSUserDefaults.standardUserDefaults().valueForKey("repeat") as? Bool {
+            repeat = bool
+        }
+        if (repeat) {
+            repeatBtn.backgroundColor = UIColor.Colors.BlueGrey
+        }else{
+            repeatBtn.backgroundColor = UIColor.clearColor()
+        }
+    }
+    
+    @IBAction func repeatAction(sender: UIButton) {
+        var repeat: Bool = false
+        if let bool = NSUserDefaults.standardUserDefaults().valueForKey("repeat") as? Bool {
+            repeat = !bool
+        }
+        
+        if (repeat) {
+            repeatBtn.backgroundColor = UIColor.Colors.BlueGrey
+        }else{
+            repeatBtn.backgroundColor = UIColor.clearColor()
+        }
+        NSUserDefaults.standardUserDefaults().setBool(repeat, forKey: "repeat")
+    }
+    
+    @IBAction func shuffleAction(sender: UIButton) {
+        shufflePlaylist()
+    }
+   
 }
 
 extension DownloadedFilesVC: MusicPlayerDelegate {

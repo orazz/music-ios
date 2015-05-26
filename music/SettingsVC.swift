@@ -13,8 +13,8 @@ class SettingsVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var sectionNames = ["Gözleg", "Sany", "Diňe aýdymçyny", "Meşhur aýdymlar", "Version"]
-    var sectionData = [["Sortirowka"],["Her gözlegde iň kän jogap berilmeli aýdymalryň sany"], ["Gözlegde diňe aýdymçynyň ady boýunça gözle"],["Programma açylanda meşhur aýdymalry görkez"],["music-ios v1.0.0(1)"]]
+    var sectionNames = [NSLocalizedString("search", comment: "Search"), NSLocalizedString("count", comment: "Count"), NSLocalizedString("performerOnly", comment: "performerOnly"), NSLocalizedString("popularMusic", comment: "Popular Music"), "Version"]
+    var sectionData = [[NSLocalizedString("sort", comment: "Sort")],[NSLocalizedString("countText", comment: "Count text")], [NSLocalizedString("performerOnlyText", comment: "performerOnly")],[NSLocalizedString("popularMusicText", comment: "Popular music text")],["music-ios v1.0.0(1)"]]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,13 +60,13 @@ extension SettingsVC: UITableViewDataSource, UITableViewDelegate {
         if(section == 0 || section == 1)
         {
             let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! SettingsCell
-            let s = self.sectionData[indexPath.section][indexPath.row]
+            let s = self.sectionData[indexPath.section][indexPath.row] as String
             cell.title.text = "\(s)"
             return cell
         }
         else if(section == 2 || section == 3){
             let cell = tableView.dequeueReusableCellWithIdentifier("CellWithSwitch", forIndexPath: indexPath) as! SettingsCellWithSwitch
-            let s = self.sectionData[indexPath.section][indexPath.row]
+            let s = self.sectionData[indexPath.section][indexPath.row] as String
             cell.title.text = s
             if section == 2 {
                 let switchBtn = NSUserDefaults.standardUserDefaults().boolForKey("performer_only")
@@ -80,7 +80,7 @@ extension SettingsVC: UITableViewDataSource, UITableViewDelegate {
         }
         else {
             let cell = tableView.dequeueReusableCellWithIdentifier("CellUnSegue", forIndexPath: indexPath) as! SettingsCellUnSegue
-            let s = self.sectionData[indexPath.section][indexPath.row]
+            let s = self.sectionData[indexPath.section][indexPath.row] as String
             cell.title.text = s
             return cell
         }
@@ -95,15 +95,15 @@ extension SettingsVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        var settingsSort = self.storyboard?.instantiateViewControllerWithIdentifier("SettingsList") as! SettingsSort
         switch indexPath.section {
         case 0 :
-            var settingsSort = self.storyboard?.instantiateViewControllerWithIdentifier("SettingsList") as! SettingsSort
             settingsSort.settingType = indexPath.section
             self.navigationController?.pushViewController(settingsSort, animated: true)
         case 1:
-            var settingsSort = self.storyboard?.instantiateViewControllerWithIdentifier("SettingsList") as! SettingsSort
             settingsSort.settingType = indexPath.section
             self.navigationController?.pushViewController(settingsSort, animated: true)
+            
         default: break
         }
     }

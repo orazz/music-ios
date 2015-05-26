@@ -11,7 +11,7 @@ import UIKit
 class SearchResultCell: UITableViewCell {
     
     @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var duration: UILabel!
+    @IBOutlet weak var durationBtn: UIButton!
     @IBOutlet weak var viewBackPlay: UIView!
     @IBOutlet weak var viewBackDuration: UIView!
     @IBOutlet weak var progressView: UIProgressView!

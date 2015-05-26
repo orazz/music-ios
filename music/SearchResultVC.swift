@@ -16,17 +16,19 @@ class SearchResultVC: UIViewController, DownloadManagerDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var settingsItem: UIBarButtonItem!
+    @IBOutlet weak var playerItem: UIBarButtonItem!
    
     var timer: NSTimer? = nil
     var api : APIController?
     var imageCache = [String : UIImage]()
     var trackList = [TrackList]()
-    var titleFile = "Indir"
     var cacheFileSize: NSCache!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        settingsItem.title = NSLocalizedString("settings", comment: "Settings")
+        playerItem.title = NSLocalizedString("player", comment: "Player")
         UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -178,7 +180,7 @@ extension SearchResultVC: UITableViewDataSource, UITableViewDelegate {
         
         let track = self.trackList[indexPath.row]
         cell.title.text = "\(track.artist) - \(track.title)"
-        cell.duration.text = stringFromTimeInterval(track.duration)
+        cell.durationBtn.titleLabel?.text = stringFromTimeInterval(track.duration)
         cell.progressView.hidden = true
         cell.size.hidden = true
         var selectedBack = UIView();
@@ -200,28 +202,28 @@ extension SearchResultVC: UITableViewDataSource, UITableViewDelegate {
         var cell = tableView.cellForRowAtIndexPath(indexPath) as! SearchResultCell
         
         cell.selectedBackgroundView.backgroundColor = UIColor(hex: 0x9E9E9E, alpha: 0.1)
-        cell.viewBackPlay.backgroundColor = UIColor.Colors.BlueGrey.colorWithAlphaComponent(0.7)
         cell.viewBackDuration.backgroundColor = UIColor.Colors.BlueGrey.colorWithAlphaComponent(0.7)
         dispatch_async(dispatch_get_main_queue(), {
             if(self.cacheFileSize.objectForKey(currentAudio.title) == nil) {
                 self.api?.audioInfo(currentAudio, indexPath: indexPath)
             }
         })
-        let shareMenu = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+        let shareMenu = UIAlertController(title: "\(currentAudio.artist)", message: "\(currentAudio.title)", preferredStyle: .ActionSheet)
         if let presentationController = shareMenu.popoverPresentationController {
             var selectedCell = tableView.cellForRowAtIndexPath(indexPath)
             presentationController.sourceView = selectedCell?.contentView
             presentationController.sourceRect = selectedCell!.contentView.frame
         }
-        let download = UIAlertAction(title: self.titleFile, style: .Default, handler: {
+        
+        let download = UIAlertAction(title: NSLocalizedString("download", comment: "Download"), style: .Default, handler: {
             (action:UIAlertAction!) -> Void in
             DownloadManager.sharedInstance.download(currentAudio, indexPath: indexPath)
         })
-        let play = UIAlertAction(title: "Diňle", style: .Default, handler: {
+        let play = UIAlertAction(title: NSLocalizedString("play", comment: "Play button"), style: .Default, handler: {
             (action:UIAlertAction!) -> Void in
             self.showPopover(indexPath)
         })
-        let share = UIAlertAction(title: "Paýlaş", style: .Default, handler: {
+        let share = UIAlertAction(title: NSLocalizedString("share", comment: "Share button"), style: .Default, handler: {
             (action:UIAlertAction!) -> Void in
             let textToShare = "Music"
             
@@ -233,7 +235,7 @@ extension SearchResultVC: UITableViewDataSource, UITableViewDelegate {
                 self.presentViewController(activityVC, animated: true, completion: nil)
             }
         })
-        let cancelAction = UIAlertAction(title: "Beset", style: UIAlertActionStyle.Cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: NSLocalizedString("cancel", comment: "Cancel button"), style: UIAlertActionStyle.Cancel, handler: nil)
         
         shareMenu.addAction(download)
         shareMenu.addAction(play)

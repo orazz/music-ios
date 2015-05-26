@@ -96,8 +96,22 @@ class MusicPlayer: NSObject {
     }
     
     func playNextTrack(notification: NSNotification) {
-        self.nextTrack()
-        //avQueuePlayer.play()
+        println("dd")
+        var repeat: Bool = false
+        if let bool = NSUserDefaults.standardUserDefaults().valueForKey("repeat") as? Bool {
+            repeat = bool
+        }
+        
+        if(repeat){
+            seekToTime()
+        }else{
+            self.nextTrack()
+        }
+    }
+    
+    func seekToTime(){
+        let targetTime = CMTimeMakeWithSeconds(0.0, Int32(NSEC_PER_SEC))
+        self.avQueuePlayer.seekToTime(targetTime, toleranceBefore: kCMTimeZero, toleranceAfter: kCMTimeZero)
     }
     
     func nextTrack() {

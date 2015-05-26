@@ -1,0 +1,31 @@
+/* 
+  Localizable.strings
+  Music
+
+  Created by Atakishiyev Orazdurdy on 5/25/15.
+  Copyright (c) 2015 veriloft. All rights reserved.
+*/
+
+settings = "Настройки";
+player = "Плеер";
+search = "Поиск";
+sort = "Вид сортировки";
+byDateAdded = "По дате добавления";
+byDuration = "По длительности аудиозаписи";
+byPopularity = "По популярности";
+count = "Количество";
+countText = "Количество аудиозаписей, информацию о которых необходимо вернуть";
+tracks = "песен";
+performerOnly = "По называнию испольнителя";
+performerOnlyText = "Поиск будет осуществляться только по называнию испольнителя";
+popularMusic = "Популярное";
+popularMusicText = "Показать популярные песни после запуска приложение";
+language = "Язык";
+download = "Скачать";
+play = "Воспроизвести";
+share = "Поделиться";
+send = "Отправить";
+reload = "Reload";
+advice = "Хей! Послушай эту песню!";
+cancel = "Отмена";
+general = "Общие";

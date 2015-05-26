@@ -1,0 +1,60 @@
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "0rT-dD-it5"; */
+"0rT-dD-it5.text" = "Label";
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "2W2-Ea-xYP"; */
+"2W2-Ea-xYP.title" = "Item";
+
+/* Class = "UIBarButtonItem"; title = "Playslist"; ObjectID = "2XV-od-BbH"; */
+"2XV-od-BbH.title" = "Playslist";
+
+/* Class = "UIButton"; normalTitle = "Iber"; ObjectID = "5TR-lz-1Qm"; */
+"5TR-lz-1Qm.normalTitle" = "Iber";
+
+/* Class = "UINavigationItem"; title = "Music"; ObjectID = "5zB-c5-HmZ"; */
+"5zB-c5-HmZ.title" = "Music";
+
+/* Class = "UIButton"; normalTitle = "Tazele"; ObjectID = "6Ba-bg-b0i"; */
+"6Ba-bg-b0i.normalTitle" = "Tazele";
+
+/* Class = "UILabel"; text = "3.23 mb"; ObjectID = "AIZ-Bh-Ge1"; */
+"AIZ-Bh-Ge1.text" = "3.23 mb";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "ALj-H8-jhE"; */
+"ALj-H8-jhE.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "DxJ-Ct-Rvg"; */
+"DxJ-Ct-Rvg.text" = "Label";
+
+/* Class = "UILabel"; text = "Artist | Album Name"; ObjectID = "Loc-ch-71h"; */
+"Loc-ch-71h.text" = "Artist | Album Name";
+
+/* Class = "UILabel"; text = "03:25"; ObjectID = "MlK-Eo-6ti"; */
+"MlK-Eo-6ti.text" = "03:25";
+
+/* Class = "UIBarButtonItem"; title = "Sazlamalar"; ObjectID = "NyR-f2-eoa"; */
+"NyR-f2-eoa.title" = "Sazlamalar";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "Pam-dc-jih"; */
+"Pam-dc-jih.text" = "Title";
+
+/* Class = "UILabel"; text = "00:05"; ObjectID = "bdF-fX-qMa"; */
+"bdF-fX-qMa.text" = "00:05";
+
+/* Class = "UILabel"; text = "Eminem - Lose your self"; ObjectID = "bj5-2x-rn5"; */
+"bj5-2x-rn5.text" = "Eminem - Lose your self";
+
+/* Class = "UILabel"; text = "/"; ObjectID = "gUQ-TP-Gqk"; */
+"gUQ-TP-Gqk.text" = "/";
+
+/* Class = "UILabel"; text = "05:02"; ObjectID = "kh5-nb-fIw"; */
+"kh5-nb-fIw.text" = "05:02";
+
+/* Class = "UILabel"; text = "Eminem - Lose Your Self"; ObjectID = "no9-We-TwJ"; */
+"no9-We-TwJ.text" = "Eminem - Lose Your Self";
+
+/* Class = "UINavigationItem"; title = "Playlist"; ObjectID = "ydj-4S-gNQ"; */
+"ydj-4S-gNQ.title" = "Playlist";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "zYT-UB-ttx"; */
+"zYT-UB-ttx.normalTitle" = "Button";

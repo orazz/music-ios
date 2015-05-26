@@ -9,7 +9,7 @@
         <!--Captcha NeededVC-->
         <scene sceneID="Hck-P2-MRt">
             <objects>
-                <viewController storyboardIdentifier="CaptchaNeededVC" id="P4c-5q-AGO" customClass="CaptchaNeededVC" customModule="music" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CaptchaNeededVC" id="P4c-5q-AGO" customClass="CaptchaNeededVC" customModule="Music" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bcV-cA-yyz"/>
                         <viewControllerLayoutGuide type="bottom" id="9Q8-0K-7g1"/>
@@ -102,7 +102,7 @@
         <!--SettingsVC-->
         <scene sceneID="9iT-Jh-iqO">
             <objects>
-                <viewController id="AlK-A1-Zc5" customClass="SettingsVC" customModule="music" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="AlK-A1-Zc5" customClass="SettingsVC" customModule="Music" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hqi-88-Enq"/>
                         <viewControllerLayoutGuide type="bottom" id="u1t-JK-3EF"/>
@@ -115,7 +115,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="6gL-PQ-3pU" customClass="SettingsCell" customModule="music" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="6gL-PQ-3pU" customClass="SettingsCell" customModule="Music" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6gL-PQ-3pU" id="HT7-SC-nhD">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -138,7 +138,7 @@
                                             <outlet property="title" destination="0rT-dD-it5" id="e8G-av-Vh1"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellWithSwitch" id="ahF-wT-nmQ" customClass="SettingsCellWithSwitch" customModule="music" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellWithSwitch" id="ahF-wT-nmQ" customClass="SettingsCellWithSwitch" customModule="Music" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ahF-wT-nmQ" id="pIH-4K-JAy">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -170,7 +170,7 @@
                                             <outlet property="title" destination="DxJ-Ct-Rvg" id="zPE-9P-DSO"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellUnSegue" id="dSb-yM-HZP" customClass="SettingsCellUnSegue" customModule="music" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellUnSegue" id="dSb-yM-HZP" customClass="SettingsCellUnSegue" customModule="Music" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dSb-yM-HZP" id="IFK-x2-53o">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -221,7 +221,7 @@
         <!--Music-->
         <scene sceneID="oKZ-3A-PQB">
             <objects>
-                <viewController id="I8b-f4-Fii" customClass="SearchResultVC" customModule="music" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="I8b-f4-Fii" customClass="SearchResultVC" customModule="Music" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MIZ-iv-cU7"/>
                         <viewControllerLayoutGuide type="bottom" id="fg4-Fo-ZOK"/>
@@ -241,7 +241,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Svs-Ji-dRe">
                                 <rect key="frame" x="0.0" y="108" width="600" height="492"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="SearchResultCell" rowHeight="60" id="1vE-6y-8M5" customClass="SearchResultCell" customModule="music" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="SearchResultCell" rowHeight="60" id="1vE-6y-8M5" customClass="SearchResultCell" customModule="Music" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="265" width="600" height="70"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1vE-6y-8M5" id="zk2-or-RPj">
@@ -258,16 +258,21 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cDw-gF-FZr">
-                                                    <rect key="frame" x="506" y="20" width="37" height="20"/>
+                                                    <rect key="frame" x="498" y="20" width="41" height="20"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J04-no-u6O">
-                                                            <rect key="frame" x="8" y="0.0" width="22" height="20"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="22" id="Nfh-EU-6Ky"/>
-                                                            </constraints>
-                                                            <state key="normal" backgroundImage="ic_play.png">
+                                                        <button opaque="NO" contentMode="scaleToFill" highlighted="YES" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J04-no-u6O" customClass="MKButton" customModule="Music" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="41" height="20"/>
+                                                            <state key="normal" image="ic_play_btn.png" backgroundImage="4A574B92-888F-4A08-96C1-77B218F1B93F">
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                    <real key="value" value="11"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="maskEnabled" value="YES"/>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="backgroundAniEnabled" value="YES"/>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="shadowAniEnabled" value="YES"/>
+                                                            </userDefinedRuntimeAttributes>
                                                             <connections>
                                                                 <action selector="playBtnTapped:" destination="I8b-f4-Fii" eventType="touchUpInside" id="osq-md-V0F"/>
                                                             </connections>
@@ -275,40 +280,35 @@
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.0003391158249" green="0.1609103556" blue="0.29963699490000001" alpha="0.72999999999999998" colorSpace="calibratedRGB"/>
                                                     <constraints>
-                                                        <constraint firstItem="J04-no-u6O" firstAttribute="leading" secondItem="cDw-gF-FZr" secondAttribute="leading" constant="8" id="INC-4c-b9Q"/>
+                                                        <constraint firstItem="J04-no-u6O" firstAttribute="top" secondItem="cDw-gF-FZr" secondAttribute="top" id="1wO-II-8TI"/>
+                                                        <constraint firstItem="J04-no-u6O" firstAttribute="leading" secondItem="cDw-gF-FZr" secondAttribute="leading" id="38I-j6-1lP"/>
                                                         <constraint firstAttribute="height" constant="20" id="IQ0-sa-5kD"/>
-                                                        <constraint firstAttribute="trailing" secondItem="J04-no-u6O" secondAttribute="trailing" constant="7" id="d0C-th-3QO"/>
-                                                        <constraint firstItem="J04-no-u6O" firstAttribute="leading" secondItem="cDw-gF-FZr" secondAttribute="leading" constant="8" id="g7o-4Z-G58"/>
-                                                        <constraint firstAttribute="bottom" secondItem="J04-no-u6O" secondAttribute="bottom" id="hQo-AU-acy"/>
-                                                        <constraint firstItem="J04-no-u6O" firstAttribute="leading" secondItem="cDw-gF-FZr" secondAttribute="leading" constant="8" id="i47-Dr-gdx"/>
-                                                        <constraint firstItem="J04-no-u6O" firstAttribute="top" secondItem="cDw-gF-FZr" secondAttribute="top" id="yQN-ji-YCl"/>
+                                                        <constraint firstAttribute="bottom" secondItem="J04-no-u6O" secondAttribute="bottom" id="o95-ww-xyo"/>
+                                                        <constraint firstAttribute="trailing" secondItem="J04-no-u6O" secondAttribute="trailing" id="pof-nv-dIF"/>
                                                     </constraints>
                                                 </view>
                                                 <view tag="4" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dj9-EK-qeb">
                                                     <rect key="frame" x="551" y="20" width="41" height="20"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="05:02" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kh5-nb-fIw">
-                                                            <rect key="frame" x="5" y="0.0" width="31" height="18"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UT8-JR-l27">
+                                                            <rect key="frame" x="0.0" y="0.0" width="41" height="20"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="64" id="VpJ-m3-nVA"/>
+                                                                <constraint firstAttribute="width" constant="41" id="dnX-Uw-Lcb"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="12"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                            <variation key="default">
-                                                                <mask key="constraints">
-                                                                    <exclude reference="VpJ-m3-nVA"/>
-                                                                </mask>
-                                                            </variation>
-                                                        </label>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
+                                                            <color key="tintColor" red="0.0003391158249" green="0.1609103556" blue="0.29963699490000001" alpha="0.72999999999999998" colorSpace="calibratedRGB"/>
+                                                            <state key="normal" title="05:23" backgroundImage="durationBack.png">
+                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </state>
+                                                        </button>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.0003391158249" green="0.1609103556" blue="0.29963699490000001" alpha="0.72999999999999998" colorSpace="calibratedRGB"/>
+                                                    <color key="tintColor" red="0.0003391158249" green="0.1609103556" blue="0.29963699490000001" alpha="0.72999999999999998" colorSpace="calibratedRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="bottom" secondItem="kh5-nb-fIw" secondAttribute="bottom" constant="2" id="28q-D4-hKo"/>
-                                                        <constraint firstItem="kh5-nb-fIw" firstAttribute="leading" secondItem="dj9-EK-qeb" secondAttribute="leading" constant="5" id="2Wz-KI-WY9"/>
-                                                        <constraint firstItem="kh5-nb-fIw" firstAttribute="centerX" secondItem="dj9-EK-qeb" secondAttribute="centerX" id="CVe-Uz-2ar"/>
+                                                        <constraint firstAttribute="bottom" secondItem="UT8-JR-l27" secondAttribute="bottom" id="7Aa-WM-iX4"/>
+                                                        <constraint firstItem="UT8-JR-l27" firstAttribute="leading" secondItem="dj9-EK-qeb" secondAttribute="leading" id="JRt-TO-pw7"/>
+                                                        <constraint firstItem="UT8-JR-l27" firstAttribute="top" secondItem="dj9-EK-qeb" secondAttribute="top" id="KZR-e3-U6R"/>
                                                         <constraint firstAttribute="height" constant="20" id="Nsr-Hg-00r"/>
-                                                        <constraint firstItem="kh5-nb-fIw" firstAttribute="top" secondItem="dj9-EK-qeb" secondAttribute="top" id="pjp-17-Pqk"/>
+                                                        <constraint firstAttribute="trailing" secondItem="UT8-JR-l27" secondAttribute="trailing" id="uTE-rF-919"/>
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3.23 mb" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AIZ-Bh-Ge1">
@@ -316,7 +316,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="62" id="3bx-6s-5oc"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="13"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -332,7 +332,7 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="AIZ-Bh-Ge1" secondAttribute="trailing" constant="90" id="XTk-fR-Dpp"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="bj5-2x-rn5" secondAttribute="bottom" constant="12" id="f9J-Ta-bAV"/>
                                                 <constraint firstItem="AIZ-Bh-Ge1" firstAttribute="top" secondItem="zk2-or-RPj" secondAttribute="topMargin" constant="12" id="hda-s1-dqK"/>
-                                                <constraint firstItem="dj9-EK-qeb" firstAttribute="leading" secondItem="cDw-gF-FZr" secondAttribute="trailing" constant="8" id="hfb-Lx-M0G"/>
+                                                <constraint firstItem="dj9-EK-qeb" firstAttribute="leading" secondItem="cDw-gF-FZr" secondAttribute="trailing" constant="12" id="hfb-Lx-M0G"/>
                                                 <constraint firstItem="Xc8-kr-qma" firstAttribute="leading" secondItem="zk2-or-RPj" secondAttribute="leading" id="oTd-ip-v7P"/>
                                                 <constraint firstItem="AIZ-Bh-Ge1" firstAttribute="leading" secondItem="bj5-2x-rn5" secondAttribute="trailing" constant="7" id="qPA-1r-jE7"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="AIZ-Bh-Ge1" secondAttribute="bottom" constant="10" id="so7-pS-bnc"/>
@@ -349,12 +349,12 @@
                                         </tableViewCellContentView>
                                         <color key="tintColor" red="0.0003391158249" green="0.1609103556" blue="0.29963699490000001" alpha="0.72999999999999998" colorSpace="calibratedRGB"/>
                                         <connections>
-                                            <outlet property="duration" destination="kh5-nb-fIw" id="bU8-Rm-9xN"/>
+                                            <outlet property="durationBtn" destination="UT8-JR-l27" id="l46-za-tAP"/>
                                             <outlet property="progressView" destination="Xc8-kr-qma" id="dRl-MJ-XcK"/>
                                             <outlet property="size" destination="AIZ-Bh-Ge1" id="NSa-EE-7Rk"/>
                                             <outlet property="title" destination="bj5-2x-rn5" id="NrC-oS-XPu"/>
                                             <outlet property="viewBackDuration" destination="dj9-EK-qeb" id="gPZ-lH-5t4"/>
-                                            <outlet property="viewBackPlay" destination="cDw-gF-FZr" id="tnT-3P-4Ka"/>
+                                            <outlet property="viewBackPlay" destination="cDw-gF-FZr" id="nc4-0s-a4R"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -391,8 +391,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="playerItem" destination="2XV-od-BbH" id="jHE-Gx-VEz"/>
                         <outlet property="searchBar" destination="CVL-s2-6We" id="VuS-82-cu4"/>
                         <outlet property="searchDisplayController" destination="X23-ei-1mg" id="lBy-kj-V3W"/>
+                        <outlet property="settingsItem" destination="NyR-f2-eoa" id="vxb-HG-H43"/>
                         <outlet property="tableView" destination="Svs-Ji-dRe" id="2oc-PR-Lo0"/>
                         <segue destination="P4c-5q-AGO" kind="presentation" id="bkN-z6-4dO"/>
                     </connections>
@@ -412,7 +414,7 @@
         <!--Play Music-->
         <scene sceneID="z5V-Ri-nDu">
             <objects>
-                <viewController storyboardIdentifier="PlayMusic" id="ImP-XM-ENS" customClass="PlayMusic" customModule="music" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PlayMusic" id="ImP-XM-ENS" customClass="PlayMusic" customModule="Music" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jjs-2A-umY"/>
                         <viewControllerLayoutGuide type="bottom" id="0a5-Nm-Wtw"/>
@@ -485,7 +487,7 @@
         <!--Settings Sort-->
         <scene sceneID="WFa-eH-paJ">
             <objects>
-                <viewController storyboardIdentifier="SettingsList" id="kSd-XA-OVl" customClass="SettingsSort" customModule="music" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingsList" id="kSd-XA-OVl" customClass="SettingsSort" customModule="Music" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="w7P-aZ-ita"/>
                         <viewControllerLayoutGuide type="bottom" id="owG-mn-qhQ"/>
@@ -528,16 +530,16 @@
             </objects>
             <point key="canvasLocation" x="2381" y="242"/>
         </scene>
-        <!--Playlist-->
+        <!--Player-->
         <scene sceneID="vPV-a0-bG8">
             <objects>
-                <viewController id="tqO-az-HBW" customClass="DownloadedFilesVC" customModule="music" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="tqO-az-HBW" customClass="DownloadedFilesVC" customModule="Music" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kpL-A4-i8Z"/>
                         <viewControllerLayoutGuide type="bottom" id="qls-TC-pa8"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Dhj-1q-ma7">
-                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blue.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="RKk-tS-EW3">
@@ -549,8 +551,85 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="acQ-6P-3I7">
+                                            <rect key="frame" x="0.0" y="500" width="600" height="100"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NQv-vU-G9M" customClass="MPVolumeView">
+                                                    <rect key="frame" x="50" y="50" width="500" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="n6t-NT-rbW"/>
+                                                    </constraints>
+                                                </view>
+                                                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MtG-WW-Zly" customClass="PlayerControlBar" customModule="Music" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="5" width="600" height="44"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="44" id="AQX-qz-IA1"/>
+                                                    </constraints>
+                                                    <items/>
+                                                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </toolbar>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fsA-fL-kLk" customClass="MKButton" customModule="Music" customModuleProvider="target">
+                                                    <rect key="frame" x="9" y="63" width="33" height="29"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="29" id="E4Q-jA-ElD"/>
+                                                        <constraint firstAttribute="width" constant="33" id="RX0-tw-Bfd"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <state key="normal" backgroundImage="repeat">
+                                                        <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="3"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="repeatAction:" destination="tqO-az-HBW" eventType="touchUpInside" id="MDU-at-tLz"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OUC-Yd-ddF" customClass="MKButton" customModule="Music" customModuleProvider="target">
+                                                    <rect key="frame" x="561" y="63" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="3n9-sQ-Jn9"/>
+                                                    </constraints>
+                                                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <state key="normal" image="shuffle">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="shuffleAction:" destination="tqO-az-HBW" eventType="touchUpInside" id="eEG-as-a1r"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="fsA-fL-kLk" secondAttribute="bottom" constant="8" id="0bY-ZJ-wPU"/>
+                                                <constraint firstItem="fsA-fL-kLk" firstAttribute="top" secondItem="acQ-6P-3I7" secondAttribute="top" constant="63" id="1i5-jU-49b"/>
+                                                <constraint firstItem="MtG-WW-Zly" firstAttribute="leading" secondItem="acQ-6P-3I7" secondAttribute="leading" id="2HX-3t-Zo0"/>
+                                                <constraint firstItem="fsA-fL-kLk" firstAttribute="leading" secondItem="acQ-6P-3I7" secondAttribute="leading" constant="9" id="DnI-TD-IyR"/>
+                                                <constraint firstItem="NQv-vU-G9M" firstAttribute="trailing" secondItem="acQ-6P-3I7" secondAttribute="trailingMargin" constant="-42" id="Gux-KD-fTV"/>
+                                                <constraint firstItem="NQv-vU-G9M" firstAttribute="leading" secondItem="acQ-6P-3I7" secondAttribute="leadingMargin" constant="42" id="HsR-18-s6j"/>
+                                                <constraint firstItem="MtG-WW-Zly" firstAttribute="top" secondItem="acQ-6P-3I7" secondAttribute="top" constant="5" id="QTb-EB-3hL"/>
+                                                <constraint firstItem="OUC-Yd-ddF" firstAttribute="trailing" secondItem="acQ-6P-3I7" secondAttribute="trailingMargin" constant="-1" id="R2d-Zj-Wot"/>
+                                                <constraint firstAttribute="centerY" secondItem="NQv-vU-G9M" secondAttribute="centerY" id="TTW-6d-wJN"/>
+                                                <constraint firstItem="NQv-vU-G9M" firstAttribute="leading" secondItem="fsA-fL-kLk" secondAttribute="trailing" constant="8" id="XYu-jq-ctH"/>
+                                                <constraint firstAttribute="height" constant="88" id="dQg-fm-qO2"/>
+                                                <constraint firstItem="MtG-WW-Zly" firstAttribute="centerX" secondItem="NQv-vU-G9M" secondAttribute="centerX" id="gaS-Hk-iCk"/>
+                                                <constraint firstItem="NQv-vU-G9M" firstAttribute="top" secondItem="MtG-WW-Zly" secondAttribute="bottom" constant="1" id="hJm-wE-KSr"/>
+                                                <constraint firstAttribute="bottom" secondItem="NQv-vU-G9M" secondAttribute="bottom" constant="20" id="hOK-Cg-OGk"/>
+                                                <constraint firstAttribute="trailing" secondItem="MtG-WW-Zly" secondAttribute="trailing" id="oQP-Cy-usA"/>
+                                                <constraint firstItem="OUC-Yd-ddF" firstAttribute="top" secondItem="MtG-WW-Zly" secondAttribute="bottom" constant="14" id="weA-41-jIC"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="dQg-fm-qO2"/>
+                                                    <exclude reference="TTW-6d-wJN"/>
+                                                </mask>
+                                            </variation>
+                                        </view>
                                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="5sD-aL-1Zx">
-                                            <rect key="frame" x="0.0" y="64" width="600" height="448"/>
+                                            <rect key="frame" x="0.0" y="64" width="600" height="440"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                             <searchBar key="tableHeaderView" contentMode="redraw" searchBarStyle="minimal" id="Zrh-fV-Zmf">
@@ -562,7 +641,7 @@
                                                 </connections>
                                             </searchBar>
                                             <prototypes>
-                                                <tableViewCell opaque="NO" contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PlaylistTableViewCell" rowHeight="48" id="2hT-F4-yGV" customClass="PlaylistTableViewCell" customModule="music" customModuleProvider="target">
+                                                <tableViewCell opaque="NO" contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PlaylistTableViewCell" rowHeight="48" id="2hT-F4-yGV" customClass="PlaylistTableViewCell" customModule="Music" customModuleProvider="target">
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2hT-F4-yGV" id="caT-Af-Stx">
                                                         <autoresizingMask key="autoresizingMask"/>
@@ -639,51 +718,13 @@
                                                 <outlet property="delegate" destination="tqO-az-HBW" id="gMn-W0-axo"/>
                                             </connections>
                                         </tableView>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="acQ-6P-3I7">
-                                            <rect key="frame" x="0.0" y="512" width="600" height="88"/>
-                                            <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NQv-vU-G9M" customClass="MPVolumeView">
-                                                    <rect key="frame" x="8" y="54" width="584" height="30"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="n6t-NT-rbW"/>
-                                                    </constraints>
-                                                </view>
-                                                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MtG-WW-Zly" customClass="PlayerControlBar" customModule="music" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="5" width="600" height="44"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="44" id="AQX-qz-IA1"/>
-                                                    </constraints>
-                                                    <items/>
-                                                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </toolbar>
-                                            </subviews>
-                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
-                                            <constraints>
-                                                <constraint firstItem="MtG-WW-Zly" firstAttribute="leading" secondItem="acQ-6P-3I7" secondAttribute="leading" id="2HX-3t-Zo0"/>
-                                                <constraint firstItem="NQv-vU-G9M" firstAttribute="trailing" secondItem="acQ-6P-3I7" secondAttribute="trailingMargin" id="Gux-KD-fTV"/>
-                                                <constraint firstItem="NQv-vU-G9M" firstAttribute="leading" secondItem="acQ-6P-3I7" secondAttribute="leadingMargin" id="HsR-18-s6j"/>
-                                                <constraint firstItem="MtG-WW-Zly" firstAttribute="top" secondItem="acQ-6P-3I7" secondAttribute="top" constant="5" id="QTb-EB-3hL"/>
-                                                <constraint firstAttribute="centerY" secondItem="NQv-vU-G9M" secondAttribute="centerY" id="TTW-6d-wJN"/>
-                                                <constraint firstAttribute="height" constant="88" id="dQg-fm-qO2"/>
-                                                <constraint firstItem="MtG-WW-Zly" firstAttribute="centerX" secondItem="NQv-vU-G9M" secondAttribute="centerX" id="gaS-Hk-iCk"/>
-                                                <constraint firstItem="NQv-vU-G9M" firstAttribute="top" secondItem="MtG-WW-Zly" secondAttribute="bottom" constant="5" id="hJm-wE-KSr"/>
-                                                <constraint firstAttribute="bottom" secondItem="NQv-vU-G9M" secondAttribute="bottom" constant="4" id="hOK-Cg-OGk"/>
-                                                <constraint firstAttribute="trailing" secondItem="MtG-WW-Zly" secondAttribute="trailing" id="oQP-Cy-usA"/>
-                                            </constraints>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="dQg-fm-qO2"/>
-                                                    <exclude reference="TTW-6d-wJN"/>
-                                                </mask>
-                                            </variation>
-                                        </view>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="centerX" secondItem="acQ-6P-3I7" secondAttribute="centerX" id="5yw-cl-4BP"/>
                                         <constraint firstItem="5sD-aL-1Zx" firstAttribute="leading" secondItem="acQ-6P-3I7" secondAttribute="leading" id="6y5-Gu-kXS"/>
                                         <constraint firstAttribute="bottom" secondItem="acQ-6P-3I7" secondAttribute="bottom" constant="49" id="9DN-tX-GK2"/>
                                         <constraint firstItem="acQ-6P-3I7" firstAttribute="top" secondItem="5sD-aL-1Zx" secondAttribute="bottom" constant="-1" id="Hlu-Sl-krn"/>
-                                        <constraint firstItem="acQ-6P-3I7" firstAttribute="top" secondItem="5sD-aL-1Zx" secondAttribute="bottom" id="RG3-me-lVM"/>
+                                        <constraint firstItem="acQ-6P-3I7" firstAttribute="top" secondItem="5sD-aL-1Zx" secondAttribute="bottom" constant="-4" id="RG3-me-lVM"/>
                                         <constraint firstItem="5sD-aL-1Zx" firstAttribute="top" secondItem="bOG-eS-OrP" secondAttribute="top" constant="64" id="W0P-Li-78m"/>
                                         <constraint firstAttribute="bottom" secondItem="acQ-6P-3I7" secondAttribute="bottom" id="aVp-ns-fBV"/>
                                         <constraint firstAttribute="trailing" secondItem="acQ-6P-3I7" secondAttribute="trailing" id="aqA-om-oki"/>
@@ -727,11 +768,13 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Playlist" id="ydj-4S-gNQ"/>
+                    <navigationItem key="navigationItem" title="Player" id="ydj-4S-gNQ"/>
                     <connections>
                         <outlet property="blurAlbumArtworkImageView" destination="RKk-tS-EW3" id="mbn-w5-yf5"/>
                         <outlet property="controlBar" destination="MtG-WW-Zly" id="29U-ro-Ane"/>
+                        <outlet property="repeatBtn" destination="fsA-fL-kLk" id="c3K-Sv-5nr"/>
                         <outlet property="searchBar" destination="Zrh-fV-Zmf" id="bFW-6F-bw5"/>
+                        <outlet property="shuffleBtn" destination="OUC-Yd-ddF" id="5YF-NR-7Jb"/>
                         <outlet property="tableView" destination="5sD-aL-1Zx" id="evg-Tq-h0F"/>
                         <outlet property="volumeView" destination="NQv-vU-G9M" id="dbL-4Y-Wfw"/>
                     </connections>
@@ -742,8 +785,167 @@
         </scene>
     </scenes>
     <resources>
+        <image name="4A574B92-888F-4A08-96C1-77B218F1B93F" width="36" height="36">
+            <mutableData key="keyedArchiveRepresentation">
+YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
+GxwgISksLzU4VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
+DBIAwAAAgAKACtISCRMVWk5TLm9iamVjdHOhFIADgAnSEgkXGqIYGYAEgAWACBAA0h0JHh9fEBROU1RJ
+RkZSZXByZXNlbnRhdGlvboAGgAdPESFOTU0AKgAAFEgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAD///8yAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD////8////i////woAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/////
+/////////97///9FAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAD/////////////////////////o////xQAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/////////////////////
+/////////+v///9dAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAD/////////////////////////////////////////uf///yEAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/////////////////////////////////////
+//////////X///90////AwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/////
+////////////////////////////////////////////////////zf///zIAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAD/////////////////////////////////////////////////////
+//////////z///+L////CgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/////////////////////
+////////////////////////////////////////////////////3v///0UAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAD/////////////////////////////////////////////////////////////////////
+//////////////+j////FAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/////////////////////////////////////
+//////////////////////////////////////////////+i////FAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/////
+////////////////////////////////////////////////////////////////////3f///0UAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAD/////////////////////////////////////////////////////
+//////////z///+K////CgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/////////////////////
+////////////////////////////////////zf///zEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAD///////////////////////////////////////////////X///9z////AwAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/////////////////////////////////////
+////uf///yEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/////
+/////////////////////////+v///9cAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAD/////////////////////////ov///xQAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//////////////93///9F
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAD////8////iv///woAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8yAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgEA
+AAMAAAABACQAAAEBAAMAAAABACQAAAECAAMAAAAEAAAU9gEDAAMAAAABAAEAAAEGAAMAAAABAAIAAAER
+AAQAAAABAAAACAESAAMAAAABAAEAAAEVAAMAAAABAAQAAAEWAAMAAAABACQAAAEXAAQAAAABAAAUQAEc
+AAMAAAABAAEAAAFSAAMAAAABAAIAAAFTAAMAAAAEAAAU/odzAAcAAAxIAAAVBgAAAAAACAAIAAgACAAB
+AAEAAQABAAAMSExpbm8CEAAAbW50clJHQiBYWVogB84AAgAJAAYAMQAAYWNzcE1TRlQAAAAASUVDIHNS
+R0IAAAAAAAAAAAAAAAAAAPbWAAEAAAAA0y1IUCAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAARY3BydAAAAVAAAAAzZGVzYwAAAYQAAABsd3RwdAAAAfAAAAAUYmtwdAAA
+AgQAAAAUclhZWgAAAhgAAAAUZ1hZWgAAAiwAAAAUYlhZWgAAAkAAAAAUZG1uZAAAAlQAAABwZG1kZAAA
+AsQAAACIdnVlZAAAA0wAAACGdmlldwAAA9QAAAAkbHVtaQAAA/gAAAAUbWVhcwAABAwAAAAkdGVjaAAA
+BDAAAAAMclRSQwAABDwAAAgMZ1RSQwAABDwAAAgMYlRSQwAABDwAAAgMdGV4dAAAAABDb3B5cmlnaHQg
+KGMpIDE5OTggSGV3bGV0dC1QYWNrYXJkIENvbXBhbnkAAGRlc2MAAAAAAAAAEnNSR0IgSUVDNjE5NjYt
+Mi4xAAAAAAAAAAAAAAASc1JHQiBJRUM2MTk2Ni0yLjEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAFhZWiAAAAAAAADzUQABAAAAARbMWFlaIAAAAAAAAAAAAAAAAAAA
+AABYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAA
+ts9kZXNjAAAAAAAAABZJRUMgaHR0cDovL3d3dy5pZWMuY2gAAAAAAAAAAAAAABZJRUMgaHR0cDovL3d3
+dy5pZWMuY2gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAZGVzYwAA
+AAAAAAAuSUVDIDYxOTY2LTIuMSBEZWZhdWx0IFJHQiBjb2xvdXIgc3BhY2UgLSBzUkdCAAAAAAAAAAAA
+AAAuSUVDIDYxOTY2LTIuMSBEZWZhdWx0IFJHQiBjb2xvdXIgc3BhY2UgLSBzUkdCAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAGRlc2MAAAAAAAAALFJlZmVyZW5jZSBWaWV3aW5nIENvbmRpdGlvbiBpbiBJRUM2MTk2
+Ni0yLjEAAAAAAAAAAAAAACxSZWZlcmVuY2UgVmlld2luZyBDb25kaXRpb24gaW4gSUVDNjE5NjYtMi4x
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB2aWV3AAAAAAATpP4AFF8uABDPFAAD7cwABBMLAANcngAA
+AAFYWVogAAAAAABMCVYAUAAAAFcf521lYXMAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAKPAAAAAnNp
+ZyAAAAAAQ1JUIGN1cnYAAAAAAAAEAAAAAAUACgAPABQAGQAeACMAKAAtADIANwA7AEAARQBKAE8AVABZ
+AF4AYwBoAG0AcgB3AHwAgQCGAIsAkACVAJoAnwCkAKkArgCyALcAvADBAMYAywDQANUA2wDgAOUA6wDw
+APYA+wEBAQcBDQETARkBHwElASsBMgE4AT4BRQFMAVIBWQFgAWcBbgF1AXwBgwGLAZIBmgGhAakBsQG5
+AcEByQHRAdkB4QHpAfIB+gIDAgwCFAIdAiYCLwI4AkECSwJUAl0CZwJxAnoChAKOApgCogKsArYCwQLL
+AtUC4ALrAvUDAAMLAxYDIQMtAzgDQwNPA1oDZgNyA34DigOWA6IDrgO6A8cD0wPgA+wD+QQGBBMEIAQt
+BDsESARVBGMEcQR+BIwEmgSoBLYExATTBOEE8AT+BQ0FHAUrBToFSQVYBWcFdwWGBZYFpgW1BcUF1QXl
+BfYGBgYWBicGNwZIBlkGagZ7BowGnQavBsAG0QbjBvUHBwcZBysHPQdPB2EHdAeGB5kHrAe/B9IH5Qf4
+CAsIHwgyCEYIWghuCIIIlgiqCL4I0gjnCPsJEAklCToJTwlkCXkJjwmkCboJzwnlCfsKEQonCj0KVApq
+CoEKmAquCsUK3ArzCwsLIgs5C1ELaQuAC5gLsAvIC+EL+QwSDCoMQwxcDHUMjgynDMAM2QzzDQ0NJg1A
+DVoNdA2ODakNww3eDfgOEw4uDkkOZA5/DpsOtg7SDu4PCQ8lD0EPXg96D5YPsw/PD+wQCRAmEEMQYRB+
+EJsQuRDXEPURExExEU8RbRGMEaoRyRHoEgcSJhJFEmQShBKjEsMS4xMDEyMTQxNjE4MTpBPFE+UUBhQn
+FEkUahSLFK0UzhTwFRIVNBVWFXgVmxW9FeAWAxYmFkkWbBaPFrIW1hb6Fx0XQRdlF4kXrhfSF/cYGxhA
+GGUYihivGNUY+hkgGUUZaxmRGbcZ3RoEGioaURp3Gp4axRrsGxQbOxtjG4obshvaHAIcKhxSHHscoxzM
+HPUdHh1HHXAdmR3DHeweFh5AHmoelB6+HukfEx8+H2kflB+/H+ogFSBBIGwgmCDEIPAhHCFIIXUhoSHO
+IfsiJyJVIoIiryLdIwojOCNmI5QjwiPwJB8kTSR8JKsk2iUJJTglaCWXJccl9yYnJlcmhya3JugnGCdJ
+J3onqyfcKA0oPyhxKKIo1CkGKTgpaymdKdAqAio1KmgqmyrPKwIrNitpK50r0SwFLDksbiyiLNctDC1B
+LXYtqy3hLhYuTC6CLrcu7i8kL1ovkS/HL/4wNTBsMKQw2zESMUoxgjG6MfIyKjJjMpsy1DMNM0YzfzO4
+M/E0KzRlNJ402DUTNU01hzXCNf02NzZyNq426TckN2A3nDfXOBQ4UDiMOMg5BTlCOX85vDn5OjY6dDqy
+Ou87LTtrO6o76DwnPGU8pDzjPSI9YT2hPeA+ID5gPqA+4D8hP2E/oj/iQCNAZECmQOdBKUFqQaxB7kIw
+QnJCtUL3QzpDfUPARANER0SKRM5FEkVVRZpF3kYiRmdGq0bwRzVHe0fASAVIS0iRSNdJHUljSalJ8Eo3
+Sn1KxEsMS1NLmkviTCpMcky6TQJNSk2TTdxOJU5uTrdPAE9JT5NP3VAnUHFQu1EGUVBRm1HmUjFSfFLH
+UxNTX1OqU/ZUQlSPVNtVKFV1VcJWD1ZcVqlW91dEV5JX4FgvWH1Yy1kaWWlZuFoHWlZaplr1W0VblVvl
+XDVchlzWXSddeF3JXhpebF69Xw9fYV+zYAVgV2CqYPxhT2GiYfViSWKcYvBjQ2OXY+tkQGSUZOllPWWS
+ZedmPWaSZuhnPWeTZ+loP2iWaOxpQ2maafFqSGqfavdrT2una/9sV2yvbQhtYG25bhJua27Ebx5veG/R
+cCtwhnDgcTpxlXHwcktypnMBc11zuHQUdHB0zHUodYV14XY+dpt2+HdWd7N4EXhueMx5KnmJeed6Rnql
+ewR7Y3vCfCF8gXzhfUF9oX4BfmJ+wn8jf4R/5YBHgKiBCoFrgc2CMIKSgvSDV4O6hB2EgITjhUeFq4YO
+hnKG14c7h5+IBIhpiM6JM4mZif6KZIrKizCLlov8jGOMyo0xjZiN/45mjs6PNo+ekAaQbpDWkT+RqJIR
+knqS45NNk7aUIJSKlPSVX5XJljSWn5cKl3WX4JhMmLiZJJmQmfyaaJrVm0Kbr5wcnImc951kndKeQJ6u
+nx2fi5/6oGmg2KFHobaiJqKWowajdqPmpFakx6U4pammGqaLpv2nbqfgqFKoxKk3qamqHKqPqwKrdavp
+rFys0K1ErbiuLa6hrxavi7AAsHWw6rFgsdayS7LCszizrrQltJy1E7WKtgG2ebbwt2i34LhZuNG5SrnC
+uju6tbsuu6e8IbybvRW9j74KvoS+/796v/XAcMDswWfB48JfwtvDWMPUxFHEzsVLxcjGRsbDx0HHv8g9
+yLzJOsm5yjjKt8s2y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc
+1+DYZNjo2WzZ8dp22vvbgNwF3IrdEN2W3hzeot8p36/gNuC94UThzOJT4tvjY+Pr5HPk/OWE5g3mlucf
+56noMui86Ubp0Opb6uXrcOv77IbtEe2c7ijutO9A78zwWPDl8XLx//KM8xnzp/Q09ML1UPXe9m32+/eK
++Bn4qPk4+cf6V/rn+3f8B/yY/Sn9uv5L/tz/bf//0iIjJCVaJGNsYXNzbmFtZVgkY2xhc3Nlc18QEE5T
+Qml0bWFwSW1hZ2VSZXCjJicoXxAQTlNCaXRtYXBJbWFnZVJlcFpOU0ltYWdlUmVwWE5TT2JqZWN00iIj
+KitXTlNBcnJheaIqKNIiIy0uXk5TTXV0YWJsZUFycmF5oy0qKNMwMQkyMzRXTlNXaGl0ZVxOU0NvbG9y
+U3BhY2VEMCAwABADgAvSIiM2N1dOU0NvbG9yojYo0iIjOTpXTlNJbWFnZaI5KF8QD05TS2V5ZWRBcmNo
+aXZlctE9PlRyb290gAEACAARABoAIwAtADIANwBFAEsAVABbAGgAbwB3AHkAfgCAAIIAhwCSAJQAlgCY
+AJ0AoACiAKQApgCoAK0AxADGAMgiGiIfIioiMyJGIkoiXSJoInEidiJ+IoEihiKVIpkioCKoIrUiuiK8
+Ir4iwyLLIs4i0yLbIt4i8CLzIvgAAAAAAAACAQAAAAAAAAA/AAAAAAAAAAAAAAAAAAAi+g
+</mutableData>
+        </image>
         <image name="blue.jpg" width="2400" height="1350"/>
-        <image name="ic_play.png" width="36" height="36"/>
+        <image name="durationBack.png" width="41" height="20"/>
+        <image name="ic_play_btn.png" width="41" height="20"/>
         <image name="imgTrack" width="300" height="300"/>
+        <image name="repeat" width="30" height="30"/>
+        <image name="shuffle" width="30" height="30"/>
     </resources>
 </document>
