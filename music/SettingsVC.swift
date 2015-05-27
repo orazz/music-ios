@@ -14,7 +14,7 @@ class SettingsVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var sectionNames = [NSLocalizedString("search", comment: "Search"), NSLocalizedString("count", comment: "Count"), NSLocalizedString("performerOnly", comment: "performerOnly"), NSLocalizedString("popularMusic", comment: "Popular Music"), "Version"]
-    var sectionData = [[NSLocalizedString("sort", comment: "Sort")],[NSLocalizedString("countText", comment: "Count text")], [NSLocalizedString("performerOnlyText", comment: "performerOnly")],[NSLocalizedString("popularMusicText", comment: "Popular music text")],["music-ios v1.0.0(1)"]]
+    var sectionData = [[NSLocalizedString("sort", comment: "Sort")],[NSLocalizedString("countText", comment: "Count text")], [NSLocalizedString("performerOnlyText", comment: "performerOnly")],[NSLocalizedString("popularMusicText", comment: "Popular music text")],["music-ios v1.0.0 (1)"]]
     
     override func viewDidLoad() {
         super.viewDidLoad()

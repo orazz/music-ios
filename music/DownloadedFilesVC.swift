@@ -77,10 +77,8 @@ class DownloadedFilesVC: UIViewController {
 
         switch event.subtype {
         case .RemoteControlPlay:
-            println("play")
             player?.play()
         case .RemoteControlPause:
-            println("pause")
             player?.pause()
         default:
             println("received sub type \(event.subtype) Ignoring")
@@ -99,9 +97,7 @@ class DownloadedFilesVC: UIViewController {
         self.originalSectionData = items
         self.currentPlayList = items
         player?.playlist.extend(items)
-        self.tableView.reloadData()
-
-        
+        self.tableView.reloadData()  
     }
     
     func shufflePlaylist() {

@@ -188,7 +188,10 @@ extension SearchResultVC: UITableViewDataSource, UITableViewDelegate {
         let cell = self.tableView.dequeueReusableCellWithIdentifier(kCellIdentifier) as! SearchResultCell
         
         let track = self.trackList[indexPath.row]
-        cell.title.text = "\(track.artist) - \(track.title)"
+        var title = track.title.stringByReplacingOccurrencesOfString("amp;", withString: "", options: nil, range: nil)
+        var artist = track.artist.stringByReplacingOccurrencesOfString("amp;", withString: "", options: nil, range: nil)
+        
+        cell.title.text = "\(artist) - \(title)"
         cell.durationBtn.titleLabel?.text = stringFromTimeInterval(track.duration)
         cell.progressView.hidden = true
         cell.size.hidden = true
@@ -208,6 +211,9 @@ extension SearchResultVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let currentAudio = trackList[indexPath.row]
+        var title = currentAudio.title.stringByReplacingOccurrencesOfString("amp;", withString: "", options: nil, range: nil)
+        var artist = currentAudio.artist.stringByReplacingOccurrencesOfString("amp;", withString: "", options: nil, range: nil)
+        
         var cell = tableView.cellForRowAtIndexPath(indexPath) as! SearchResultCell
         
         cell.selectedBackgroundView.backgroundColor = UIColor(hex: 0x9E9E9E, alpha: 0.1)
@@ -217,7 +223,9 @@ extension SearchResultVC: UITableViewDataSource, UITableViewDelegate {
                 self.api?.audioInfo(currentAudio, indexPath: indexPath)
             }
         })
-        let shareMenu = UIAlertController(title: "\(currentAudio.artist)", message: "\(currentAudio.title)", preferredStyle: .ActionSheet)
+        
+
+        let shareMenu = UIAlertController(title: "\(artist)", message: "\(title)", preferredStyle: .ActionSheet)
         if let presentationController = shareMenu.popoverPresentationController {
             var selectedCell = tableView.cellForRowAtIndexPath(indexPath)
             presentationController.sourceView = selectedCell?.contentView
@@ -234,9 +242,9 @@ extension SearchResultVC: UITableViewDataSource, UITableViewDelegate {
         })
         let share = UIAlertAction(title: NSLocalizedString("share", comment: "Share button"), style: .Default, handler: {
             (action:UIAlertAction!) -> Void in
-            let textToShare = "Music"
+            let textToShare = NSLocalizedString("advice", comment: "Hey! You should check up this music!")
             
-            if let myWebsite = NSURL(string: "http://www.alashow.com/music")
+            if let myWebsite = NSURL(string: "http://www.alashov.com/music/download.php?audio_id=\(currentAudio.owner_id)_\(currentAudio.aid)")
             {
                 let objectsToShare = [textToShare, myWebsite]
                 let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
@@ -248,7 +256,7 @@ extension SearchResultVC: UITableViewDataSource, UITableViewDelegate {
         
         shareMenu.addAction(download)
         shareMenu.addAction(play)
-        //shareMenu.addAction(share)
+        shareMenu.addAction(share)
         shareMenu.addAction(cancelAction)
 
         self.presentViewController(shareMenu, animated: true, completion: nil)

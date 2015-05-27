@@ -26,6 +26,6 @@ play = "Play";
 share = "Share";
 send = "Send";
 reload = "Reload";
-advice = "Hey! You should check up this music!";
+advice = "Hey! You should check up this music!\n";
 cancel = "Cancel";
 general = "General";
