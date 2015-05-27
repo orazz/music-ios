@@ -248,7 +248,7 @@ extension SearchResultVC: UITableViewDataSource, UITableViewDelegate {
         
         shareMenu.addAction(download)
         shareMenu.addAction(play)
-        shareMenu.addAction(share)
+        //shareMenu.addAction(share)
         shareMenu.addAction(cancelAction)
 
         self.presentViewController(shareMenu, animated: true, completion: nil)

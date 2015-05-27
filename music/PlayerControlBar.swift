@@ -50,19 +50,21 @@ class PlayerControlBar: UIToolbar {
     
     func play() {
         if let player = self.player {
+            self.items?[3] = pauseButton!
             if player.paused() {
                 MusicPlayer.initSession()
                 player.play()
-                self.items?[3] = pauseButton!
+                
             }
         }
     }
     
     func pause() {
         if let player = self.player {
+            self.items?[3] = playButton!
             if !player.paused() {
                 player.pause()
-                self.items?[3] = playButton!
+                
             }
         }
     }

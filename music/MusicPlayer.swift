@@ -96,7 +96,6 @@ class MusicPlayer: NSObject {
     }
     
     func playNextTrack(notification: NSNotification) {
-        println("dd")
         var repeat: Bool = false
         if let bool = NSUserDefaults.standardUserDefaults().valueForKey("repeat") as? Bool {
             repeat = bool
