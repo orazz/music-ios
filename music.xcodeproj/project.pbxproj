@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E095C661B162E8B00600451 /* unnamed.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E095C651B162E8B00600451 /* unnamed.png */; };
 		8E297BA41B13570300A39CE2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8E297BA61B13570300A39CE2 /* Localizable.strings */; };
 		8E297BAD1B14846C00A39CE2 /* MKButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E297BAC1B14846C00A39CE2 /* MKButton.swift */; };
 		8E297BAF1B14853300A39CE2 /* MKLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E297BAE1B14853300A39CE2 /* MKLayer.swift */; };
@@ -33,7 +34,6 @@
 		8E8F17241B04E575004F9972 /* ic_pause_asphalt.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E8F17221B04E575004F9972 /* ic_pause_asphalt.png */; };
 		8E8F17291B050915004F9972 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8F17281B050915004F9972 /* ProgressView.swift */; };
 		8E8F172B1B05100B004F9972 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8F172A1B05100B004F9972 /* ImageLoader.swift */; };
-		8EB2E3C41B161FB80070DB5A /* unnamed.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EB2E3C31B161FB80070DB5A /* unnamed.png */; };
 		8EC144AE1B0B5FFA00CB4AAA /* PlaylistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC144AD1B0B5FFA00CB4AAA /* PlaylistItem.swift */; };
 		8EC144B01B0B66EF00CB4AAA /* blue.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8EC144AF1B0B66EF00CB4AAA /* blue.jpg */; };
 		8EC144B21B0B69A800CB4AAA /* PlayerControlBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC144B11B0B69A800CB4AAA /* PlayerControlBar.swift */; };
@@ -62,6 +62,7 @@
 
 /* Begin PBXFileReference section */
 		773E6928008805D7772818C7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E095C651B162E8B00600451 /* unnamed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unnamed.png; sourceTree = "<group>"; };
 		8E297BA51B13570300A39CE2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8E297BA71B1357C200A39CE2 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8E297BA81B1357C200A39CE2 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
@@ -96,7 +97,6 @@
 		8E8F17221B04E575004F9972 /* ic_pause_asphalt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_pause_asphalt.png; sourceTree = "<group>"; };
 		8E8F17281B050915004F9972 /* ProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		8E8F172A1B05100B004F9972 /* ImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
-		8EB2E3C31B161FB80070DB5A /* unnamed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unnamed.png; sourceTree = "<group>"; };
 		8EC144AD1B0B5FFA00CB4AAA /* PlaylistItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistItem.swift; sourceTree = "<group>"; };
 		8EC144AF1B0B66EF00CB4AAA /* blue.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = blue.jpg; sourceTree = "<group>"; };
 		8EC144B11B0B69A800CB4AAA /* PlayerControlBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerControlBar.swift; sourceTree = "<group>"; };
@@ -181,7 +181,7 @@
 				8E8F171F1B04D7A9004F9972 /* ic_play.png */,
 				8E8F17211B04E575004F9972 /* ic_play_asphalt.png */,
 				8E8F17221B04E575004F9972 /* ic_pause_asphalt.png */,
-				8EB2E3C31B161FB80070DB5A /* unnamed.png */,
+				8E095C651B162E8B00600451 /* unnamed.png */,
 				8E4AAB691AFE44BE00808F28 /* Images.xcassets */,
 				8E4AAB621AFE44BE00808F28 /* AppDelegate.swift */,
 				8E4AAB6B1AFE44BE00808F28 /* LaunchScreen.xib */,
@@ -323,7 +323,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 8E4AAB581AFE44BE00808F28 /* Build configuration list for PBXProject "Music" */;
+			buildConfigurationList = 8E4AAB581AFE44BE00808F28 /* Build configuration list for PBXProject "music" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -351,7 +351,7 @@
 			files = (
 				8E4AAB681AFE44BE00808F28 /* Main.storyboard in Resources */,
 				8E479A601B0F5B7100D97A5D /* black.jpg in Resources */,
-				8EB2E3C41B161FB80070DB5A /* unnamed.png in Resources */,
+				8E095C661B162E8B00600451 /* unnamed.png in Resources */,
 				8E5038DC1B14A3470065DD52 /* durationBack.png in Resources */,
 				8E5038DA1B149A5C0065DD52 /* ic_play_btn.png in Resources */,
 				8E297BA41B13570300A39CE2 /* Localizable.strings in Resources */,
@@ -638,7 +638,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8E4AAB581AFE44BE00808F28 /* Build configuration list for PBXProject "Music" */ = {
+		8E4AAB581AFE44BE00808F28 /* Build configuration list for PBXProject "music" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8E4AAB7A1AFE44BF00808F28 /* Debug */,
