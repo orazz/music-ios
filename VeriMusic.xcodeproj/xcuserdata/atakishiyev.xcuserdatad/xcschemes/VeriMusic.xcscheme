@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8E4AAB5C1AFE44BE00808F28"
-               BuildableName = "Music.app"
-               BlueprintName = "Music"
-               ReferencedContainer = "container:Music.xcodeproj">
+               BuildableName = "VeriMusic.app"
+               BlueprintName = "VeriMusic"
+               ReferencedContainer = "container:VeriMusic.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8E4AAB5C1AFE44BE00808F28"
-            BuildableName = "Music.app"
-            BlueprintName = "Music"
-            ReferencedContainer = "container:Music.xcodeproj">
+            BuildableName = "VeriMusic.app"
+            BlueprintName = "VeriMusic"
+            ReferencedContainer = "container:VeriMusic.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -53,9 +53,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8E4AAB5C1AFE44BE00808F28"
-            BuildableName = "Music.app"
-            BlueprintName = "Music"
-            ReferencedContainer = "container:Music.xcodeproj">
+            BuildableName = "VeriMusic.app"
+            BlueprintName = "VeriMusic"
+            ReferencedContainer = "container:VeriMusic.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8E4AAB5C1AFE44BE00808F28"
-            BuildableName = "Music.app"
-            BlueprintName = "Music"
-            ReferencedContainer = "container:Music.xcodeproj">
+            BuildableName = "VeriMusic.app"
+            BlueprintName = "VeriMusic"
+            ReferencedContainer = "container:VeriMusic.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

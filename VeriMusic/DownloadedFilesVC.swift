@@ -170,7 +170,7 @@ extension DownloadedFilesVC: UITableViewDataSource, UITableViewDelegate {
         }else{
             cell.albumArtworkImageView?.image = UIImage(named: "imgTrack")
         }
-        if item?.title != nil {
+        if item?.title != nil && item?.title != "untitled" {
             cell.titleLabel?.text = item?.title
         }else{
             var filename: AnyObject? = self.player?.playlist[indexPath.row].asset!.valueForKey("URL")
