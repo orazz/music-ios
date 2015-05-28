@@ -23,7 +23,7 @@ class DownloadedFilesVC: UIViewController {
     var downloadedFiles = [PlaylistItem]()
     var kCellIdentifier = "PlaylistTableViewCell"
     
-    private var player: MusicPlayer?//PlaylistPlayer?
+    private var player: MusicPlayer?
     
     var searcher = UISearchController()
     var searching = false
@@ -48,6 +48,8 @@ class DownloadedFilesVC: UIViewController {
         self.tableView.separatorColor = UIColor.Colors.Grey.colorWithAlphaComponent(0.3)
         self.tableView.tableFooterView = UIView(frame: CGRectZero)
         self.searchBar.sizeToFit()
+        var textFieldInsideSearchBar = self.searchBar.valueForKey("searchField") as? UITextField
+        textFieldInsideSearchBar?.textColor = UIColor.whiteColor()
         repeat()
         self.view.backgroundColor = UIColor.clearColor()
         self.tableView.addPullToRefresh({ [weak self] in
@@ -97,7 +99,10 @@ class DownloadedFilesVC: UIViewController {
         self.originalSectionData = items
         self.currentPlayList = items
         player?.playlist.extend(items)
-        self.tableView.reloadData()  
+        self.tableView.reloadData()
+        self.tableView.setContentOffset(
+            CGPointMake(0, 44),
+            animated:true)
     }
     
     func shufflePlaylist() {
@@ -142,9 +147,27 @@ extension DownloadedFilesVC: MusicPlayerDelegate {
         if (playlistItem?.artwork != nil){
             blurAlbumArtworkImageView?.image = playlistItem?.artwork
         }
-        if(playlistItem?.title != nil && playlistItem?.artist != nil){
-            MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo = [MPMediaItemPropertyTitle: playlistItem!.title! as String , MPMediaItemPropertyArtist: playlistItem!.artist! as String]
+
+        var title: String = ""
+        var artist: String = ""
+        if(playlistItem?.title != nil && playlistItem?.artist != nil && playlistItem?.title != "untitled"){
+            title = playlistItem!.title!
+            artist = playlistItem!.artist!
+        }else{
+            var filename: AnyObject? = playlistItem!.asset!.valueForKey("URL")
+            if let name = filename?.lastPathComponent.componentsSeparatedByString(" - "){
+                title = name[1]
+                artist = name[0]
+            }
         }
+        var artImage = UIImage(named: "imgTrack")
+        if playlistItem?.artwork != nil{
+            artImage = playlistItem?.artwork
+        }
+        var artwork = MPMediaItemArtwork(image: artImage)
+        
+        MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo = [MPMediaItemPropertyTitle: title as String , MPMediaItemPropertyArtist: artist as String, MPMediaItemPropertyArtwork: artwork]
+        
         tableView?.reloadData()
     }
 }

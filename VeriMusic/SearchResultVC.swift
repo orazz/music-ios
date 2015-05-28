@@ -124,12 +124,14 @@ extension SearchResultVC: APIControllerProtocol {
         if let length = results["length"] as? String {
             println(length)
             dispatch_async(dispatch_get_main_queue(), {
-            self.cacheFileSize.setObject("\((length as NSString).doubleValue/1024)", forKey: results["title"]!)
-            self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+                if (indexPath.row > 0){
+                    self.cacheFileSize.setObject("\((length as NSString).doubleValue/1024)", forKey: results["title"]!)
+                    self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+                }
             })
         }
         if let status = results["status"] as? String {
-            println(status)
+            GetTrackList(self.searchBar.text)
         }
     }
     

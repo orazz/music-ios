@@ -9,7 +9,7 @@
         <!--Captcha NeededVC-->
         <scene sceneID="Hck-P2-MRt">
             <objects>
-                <viewController storyboardIdentifier="CaptchaNeededVC" id="P4c-5q-AGO" customClass="CaptchaNeededVC" customModule="Music" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CaptchaNeededVC" id="P4c-5q-AGO" customClass="CaptchaNeededVC" customModule="VeriMusic" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bcV-cA-yyz"/>
                         <viewControllerLayoutGuide type="bottom" id="9Q8-0K-7g1"/>
@@ -103,7 +103,7 @@
         <!--SettingsVC-->
         <scene sceneID="9iT-Jh-iqO">
             <objects>
-                <viewController id="AlK-A1-Zc5" customClass="SettingsVC" customModule="Music" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="AlK-A1-Zc5" customClass="SettingsVC" customModule="VeriMusic" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hqi-88-Enq"/>
                         <viewControllerLayoutGuide type="bottom" id="u1t-JK-3EF"/>
@@ -116,7 +116,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="6gL-PQ-3pU" customClass="SettingsCell" customModule="Music" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="6gL-PQ-3pU" customClass="SettingsCell" customModule="VeriMusic" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6gL-PQ-3pU" id="HT7-SC-nhD">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -139,7 +139,7 @@
                                             <outlet property="title" destination="0rT-dD-it5" id="e8G-av-Vh1"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellWithSwitch" id="ahF-wT-nmQ" customClass="SettingsCellWithSwitch" customModule="Music" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellWithSwitch" id="ahF-wT-nmQ" customClass="SettingsCellWithSwitch" customModule="VeriMusic" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ahF-wT-nmQ" id="pIH-4K-JAy">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -171,7 +171,7 @@
                                             <outlet property="title" destination="DxJ-Ct-Rvg" id="zPE-9P-DSO"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellUnSegue" id="dSb-yM-HZP" customClass="SettingsCellUnSegue" customModule="Music" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellUnSegue" id="dSb-yM-HZP" customClass="SettingsCellUnSegue" customModule="VeriMusic" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dSb-yM-HZP" id="IFK-x2-53o">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -222,7 +222,7 @@
         <!--Music-->
         <scene sceneID="oKZ-3A-PQB">
             <objects>
-                <viewController id="I8b-f4-Fii" customClass="SearchResultVC" customModule="Music" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="I8b-f4-Fii" customClass="SearchResultVC" customModule="VeriMusic" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MIZ-iv-cU7"/>
                         <viewControllerLayoutGuide type="bottom" id="fg4-Fo-ZOK"/>
@@ -233,7 +233,7 @@
                         <subviews>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="CVL-s2-6We">
                                 <rect key="frame" x="0.0" y="64" width="600" height="44"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="0.1322941655" green="0.28433999560000001" blue="0.40409958959999998" alpha="0.87" colorSpace="calibratedRGB"/>
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="I8b-f4-Fii" id="4Kp-MA-Nt8"/>
@@ -242,7 +242,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Svs-Ji-dRe">
                                 <rect key="frame" x="0.0" y="108" width="600" height="492"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="SearchResultCell" rowHeight="60" id="1vE-6y-8M5" customClass="SearchResultCell" customModule="Music" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="SearchResultCell" rowHeight="60" id="1vE-6y-8M5" customClass="SearchResultCell" customModule="VeriMusic" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="265" width="600" height="70"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1vE-6y-8M5" id="zk2-or-RPj">
@@ -261,9 +261,9 @@
                                                 <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cDw-gF-FZr">
                                                     <rect key="frame" x="498" y="20" width="41" height="20"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J04-no-u6O" customClass="MKButton" customModule="Music" customModuleProvider="target">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J04-no-u6O" customClass="MKButton" customModule="VeriMusic" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="41" height="20"/>
-                                                            <state key="normal" image="ic_play_btn.png" backgroundImage="6A404C65-E2C3-42EE-B2FB-3BE00AD7C6E9">
+                                                            <state key="normal" image="ic_play_btn.png" backgroundImage="A76A841E-A301-44E7-82D5-46231FA34605">
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
                                                             <userDefinedRuntimeAttributes>
@@ -415,7 +415,7 @@
         <!--Play Music-->
         <scene sceneID="z5V-Ri-nDu">
             <objects>
-                <viewController storyboardIdentifier="PlayMusic" id="ImP-XM-ENS" customClass="PlayMusic" customModule="Music" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PlayMusic" id="ImP-XM-ENS" customClass="PlayMusic" customModule="VeriMusic" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jjs-2A-umY"/>
                         <viewControllerLayoutGuide type="bottom" id="0a5-Nm-Wtw"/>
@@ -430,6 +430,9 @@
                                     <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="pyz-PF-Mue">
                                         <rect key="frame" x="62" y="62" width="240" height="31"/>
                                         <color key="tintColor" red="0.0003391158249" green="0.1609103556" blue="0.29963699490000001" alpha="0.87" colorSpace="calibratedRGB"/>
+                                        <variation key="widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="62" y="62" width="220" height="31"/>
+                                        </variation>
                                         <connections>
                                             <action selector="progressSliderValueChanged:" destination="ImP-XM-ENS" eventType="valueChanged" id="u4W-ua-iOb"/>
                                         </connections>
@@ -443,29 +446,38 @@
                                             <action selector="PlayeBtn:" destination="ImP-XM-ENS" eventType="touchUpInside" id="4LB-ra-UdV"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Eminem - Lose Your Self" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="no9-We-TwJ">
+                                        <rect key="frame" x="16" y="13" width="284" height="21"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="15"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:05" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bdF-fX-qMa">
                                         <rect key="frame" x="224" y="33" width="34" height="21"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <variation key="widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="204" y="33" width="34" height="21"/>
+                                        </variation>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="/" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gUQ-TP-Gqk">
                                         <rect key="frame" x="259" y="33" width="8" height="21"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <variation key="widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="239" y="33" width="8" height="21"/>
+                                        </variation>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="03:25" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MlK-Eo-6ti">
                                         <rect key="frame" x="266" y="33" width="34" height="21"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Eminem - Lose Your Self" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="no9-We-TwJ">
-                                        <rect key="frame" x="16" y="13" width="284" height="21"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="15"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
+                                        <variation key="widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="246" y="33" width="34" height="21"/>
+                                        </variation>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -484,12 +496,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8pa-PQ-PZM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2381" y="912"/>
+            <point key="canvasLocation" x="2380.5" y="912"/>
         </scene>
         <!--Settings Sort-->
         <scene sceneID="WFa-eH-paJ">
             <objects>
-                <viewController storyboardIdentifier="SettingsList" id="kSd-XA-OVl" customClass="SettingsSort" customModule="Music" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingsList" id="kSd-XA-OVl" customClass="SettingsSort" customModule="VeriMusic" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="w7P-aZ-ita"/>
                         <viewControllerLayoutGuide type="bottom" id="owG-mn-qhQ"/>
@@ -535,7 +547,7 @@
         <!--Player-->
         <scene sceneID="vPV-a0-bG8">
             <objects>
-                <viewController id="tqO-az-HBW" customClass="DownloadedFilesVC" customModule="Music" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="tqO-az-HBW" customClass="DownloadedFilesVC" customModule="VeriMusic" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kpL-A4-i8Z"/>
                         <viewControllerLayoutGuide type="bottom" id="qls-TC-pa8"/>
@@ -562,7 +574,7 @@
                                                         <constraint firstAttribute="height" constant="30" id="n6t-NT-rbW"/>
                                                     </constraints>
                                                 </view>
-                                                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MtG-WW-Zly" customClass="PlayerControlBar" customModule="Music" customModuleProvider="target">
+                                                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MtG-WW-Zly" customClass="PlayerControlBar" customModule="VeriMusic" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="5" width="600" height="44"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="44" id="AQX-qz-IA1"/>
@@ -570,7 +582,7 @@
                                                     <items/>
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </toolbar>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fsA-fL-kLk" customClass="MKButton" customModule="Music" customModuleProvider="target">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fsA-fL-kLk" customClass="MKButton" customModule="VeriMusic" customModuleProvider="target">
                                                     <rect key="frame" x="9" y="63" width="33" height="29"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="29" id="E4Q-jA-ElD"/>
@@ -590,7 +602,7 @@
                                                         <action selector="repeatAction:" destination="tqO-az-HBW" eventType="touchUpInside" id="MDU-at-tLz"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OUC-Yd-ddF" customClass="MKButton" customModule="Music" customModuleProvider="target">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OUC-Yd-ddF" customClass="MKButton" customModule="VeriMusic" customModuleProvider="target">
                                                     <rect key="frame" x="561" y="63" width="30" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="3n9-sQ-Jn9"/>
@@ -637,13 +649,14 @@
                                             <searchBar key="tableHeaderView" contentMode="redraw" searchBarStyle="minimal" id="Zrh-fV-Zmf">
                                                 <rect key="frame" x="0.0" y="-19" width="600" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="tintColor" red="0.17153094990000001" green="0.36867165959999998" blue="0.52395044189999995" alpha="0.87" colorSpace="calibratedRGB"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="tqO-az-HBW" id="3Iy-5M-2LJ"/>
                                                 </connections>
                                             </searchBar>
                                             <prototypes>
-                                                <tableViewCell opaque="NO" contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PlaylistTableViewCell" rowHeight="48" id="2hT-F4-yGV" customClass="PlaylistTableViewCell" customModule="Music" customModuleProvider="target">
+                                                <tableViewCell opaque="NO" contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PlaylistTableViewCell" rowHeight="48" id="2hT-F4-yGV" customClass="PlaylistTableViewCell" customModule="VeriMusic" customModuleProvider="target">
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2hT-F4-yGV" id="caT-Af-Stx">
                                                         <autoresizingMask key="autoresizingMask"/>
@@ -787,7 +800,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="6A404C65-E2C3-42EE-B2FB-3BE00AD7C6E9" width="36" height="36">
+        <image name="A76A841E-A301-44E7-82D5-46231FA34605" width="36" height="36">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISksLzU4VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
@@ -946,7 +959,7 @@ Ir4iwyLLIs4i0yLbIt4i8CLzIvgAAAAAAAACAQAAAAAAAAA/AAAAAAAAAAAAAAAAAAAi+g
         <image name="blue.jpg" width="2400" height="1350"/>
         <image name="durationBack.png" width="41" height="20"/>
         <image name="ic_play_btn.png" width="41" height="20"/>
-        <image name="imgTrack" width="300" height="300"/>
+        <image name="imgTrack" width="512" height="512"/>
         <image name="shuffle" width="30" height="30"/>
     </resources>
 </document>

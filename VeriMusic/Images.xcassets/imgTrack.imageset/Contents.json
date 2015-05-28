@@ -3,16 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "music.jpg"
+      "filename" : "iTunesArtwork.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "music-1.jpg"
+      "filename" : "iTunesArtwork-1.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "3x"
+      "scale" : "3x",
+      "filename" : "iTunesArtwork-2.png"
     }
   ],
   "info" : {
