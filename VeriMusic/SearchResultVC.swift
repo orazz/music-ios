@@ -17,7 +17,6 @@ class SearchResultVC: UIViewController, DownloadManagerDelegate {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var settingsItem: UIBarButtonItem!
-    @IBOutlet weak var playerItem: UIBarButtonItem!
    
     var timer: NSTimer? = nil
     var api : APIController?
@@ -27,8 +26,10 @@ class SearchResultVC: UIViewController, DownloadManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        api = APIController(delegate: self)
+        self.api?.getToken(Config.GET_TOKEN)
+        
         settingsItem.title = NSLocalizedString("settings", comment: "Settings")
-        playerItem.title = NSLocalizedString("player", comment: "Player")
         UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -45,21 +46,32 @@ class SearchResultVC: UIViewController, DownloadManagerDelegate {
         getDownloadedAudioFiles()
         DownloadManager.sharedInstance.subscribe(self)
         cacheFileSize = NSCache()
+
+        let player = UIBarButtonItem(title: NSLocalizedString("player", comment: "Player"), style: .Plain, target: self, action: Selector("seguePlayer:"))
+        if let downloadEnabled = NSUserDefaults.standardUserDefaults().valueForKey("downloadEnabled") as? Int {
+            if downloadEnabled == 1 {
+                self.navigationItem.rightBarButtonItem = player
+            }
+        }
     }
 
     deinit {
         DownloadManager.sharedInstance.unsubscribe(self)
     }
     
+    func seguePlayer(sender: UIBarButtonItem) {
+        self.performSegueWithIdentifier("PlayerVC", sender: nil)
+    }
+    
     func GetTrackList(searchText: String){
         let popular_songs = (NSUserDefaults.standardUserDefaults().boolForKey("popular_songs"))
 
         if popular_songs {
-            api = APIController(delegate: self)
+            //api = APIController(delegate: self)
             api!.searchVKFor(searchText)
         }else{
             if(searchText != ""){
-                api = APIController(delegate: self)
+              //  api = APIController(delegate: self)
                 api!.searchVKFor(searchText)
             }
         }
@@ -144,6 +156,11 @@ extension SearchResultVC: APIControllerProtocol {
             captchaNeededVC.captchaImgUrl = captcha_img
             captchaNeededVC.captcha_sid = captcha_sid
             self.navigationController?.presentViewController(captchaNeededVC, animated: true, completion: nil)
+        }
+        
+        if(error_code == 5){
+            self.api?.getToken(Config.GET_TOKEN)
+            GetTrackList("")
         }
         
         if(error_code == 6){
@@ -250,13 +267,19 @@ extension SearchResultVC: UITableViewDataSource, UITableViewDelegate {
             {
                 let objectsToShare = [textToShare, myWebsite]
                 let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+                var selectedCell = tableView.cellForRowAtIndexPath(indexPath)
+                activityVC.popoverPresentationController!.sourceView = selectedCell?.contentView
                 
                 self.presentViewController(activityVC, animated: true, completion: nil)
             }
         })
         let cancelAction = UIAlertAction(title: NSLocalizedString("cancel", comment: "Cancel button"), style: UIAlertActionStyle.Cancel, handler: nil)
+        if let downloadEnabled = NSUserDefaults.standardUserDefaults().valueForKey("downloadEnabled") as? Int {
+            if downloadEnabled == 1 {
+                shareMenu.addAction(download)
+            }
+        }
         
-        shareMenu.addAction(download)
         shareMenu.addAction(play)
         shareMenu.addAction(share)
         shareMenu.addAction(cancelAction)

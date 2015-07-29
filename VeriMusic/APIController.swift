@@ -14,7 +14,7 @@ struct Config {
     
     static let VK_SERVER = "https://api.vk.com/"
     static let VK_AUDIO_SEARCH = VK_SERVER + "method/audio.search"
-    static let ACCESS_TOKEN =  "23e2f0b5c127bc8bccc5e4b20eeb55117c0c09079c9e6a4788735f9c9615ccf628cc7f1919bf0acb329c2b"
+    static let ACCESS_TOKEN =  "e9dbafe947e48136f15bbaf1184095282f53bb146441910421e180b46fa6cf6cf8c37f7de3f525d2c121d"
     static let GET_TOKEN = "http://alashov.com/music/app/get_token.php"
 }
 
@@ -120,7 +120,11 @@ class APIController {
         var err: NSError?
         let task = session.dataTaskWithURL(url!, completionHandler: {data, response, error -> Void in
             if let json = NSJSONSerialization.JSONObjectWithData(data, options: .MutableLeaves, error: &err) as? NSDictionary {
+     
                 var newToken: String = json.valueForKey("vkToken") as! String
+                var downloadEnabled: Int = json.valueForKey("downloadEnabled") as! Int
+                
+                NSUserDefaults.standardUserDefaults().setInteger(downloadEnabled, forKey: "downloadEnabled")
                 NSUserDefaults.standardUserDefaults().setObject(newToken, forKey: "vkToken")
                 self.delegate.didReceiveAPIResults(["status":"ok"], indexPath: NSIndexPath())
                 UIApplication.sharedApplication().networkActivityIndicatorVisible = false
@@ -152,6 +156,8 @@ class APIController {
                                     let captcha_img = error["captcha_img"] as? String
                                     self.delegate.result!("error", error_msg: error_msg, error_code: error_code, captcha_sid: captcha_sid!, captcha_img: captcha_img!)
                                     println("\(captcha_sid!)  \(captcha_img!)")
+                                case 5:
+                                    self.delegate.result!("error", error_msg: error_msg, error_code: error_code, captcha_sid: "", captcha_img: "")
                                 case 6:
                                     self.delegate.result!("error", error_msg: error_msg, error_code: error_code, captcha_sid: "", captcha_img: "")
                                 case 10:
